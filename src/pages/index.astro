@@ -2,35 +2,7 @@
 import Layout from '../layout/Layout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Zábava se Šárkou</title>
-
-    <!-- CookieYes CMP -->
-    <script
-      id="cookieyes"
-      type="text/javascript"
-      src="https://cdn-cookieyes.com/client_data/c23b08ee6d38c1b7099e30c3/script.js"
-    ></script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSLCD28ECY"
-    ></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'G-KSLCD28ECY');
-    </script>
-  </head>
-  <body>
-    <h1>Zábava na míru pro děti</h1>
-    <p>Hledáte zábavu?</p>
-  </body>
-</html>
+<Layout>
+  <h1>Zábava na míru pro děti</h1>
+  <p>Hledáte zábavu?</p>
+</Layout>
