@@ -1,3 +1,7 @@
+---
+import Navbar from '../components/Navbar.astro';
+---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -26,6 +30,9 @@
     </script>
   </head>
   <body>
+    <header>
+      <Navbar />
+    </header>
     <slot />
   </body>
 </html>

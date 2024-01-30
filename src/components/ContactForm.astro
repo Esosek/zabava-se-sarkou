@@ -1,0 +1,17 @@
+<form class="submit-form" action="" method="post">
+  <label for="name">Jméno a příjmení</label>
+  <input name="name" type="text" />
+  <label for="email">Email</label>
+  <input name="email" type="email" />
+  <label for="message">Zpráva</label>
+  <input name="message" type="text" />
+  <button type="submit">Odeslat</button>
+</form>
+
+<script>
+  const submitForm = document.querySelector('.submit-form');
+  submitForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('Form submitted');
+  });
+</script>
