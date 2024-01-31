@@ -3,10 +3,10 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  // output: 'server',
+  // adapter: node({
+  //   mode: 'standalone',
+  // }),
   site: 'https://esosek.github.io',
   base: '/zabava-se-sarkou',
 });
