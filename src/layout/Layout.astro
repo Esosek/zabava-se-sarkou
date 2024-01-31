@@ -1,5 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro';
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -7,7 +9,7 @@ import Navbar from '../components/Navbar.astro';
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <title>Zábava se Šárkou</title>
+    <title>{title} | Zábava se Šárkou</title>
 
     <!-- CookieYes CMP -->
     <script
