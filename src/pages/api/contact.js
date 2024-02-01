@@ -27,7 +27,7 @@ function getFormData(data) {
   result.userEmail = escapeInput(data.get('email'));
   result.userMessage = escapeInput(data.get('message'));
   result.userSubscribe = data.get('subscribe');
-  result.honeypot = data.get('honeypot');
+  result.honeypot = data.get('user-number');
   return result;
 }
 
@@ -40,23 +40,29 @@ function escapeInput(input) {
     .replace(/'/g, '&#39;');
 }
 
-function validateFormData({ userName, userEmail, userMessage, honeypot }) {
+function validateFormData({
+  userName,
+  userEmail,
+  userMessage,
+  userSubscribe,
+  honeypot,
+}) {
   const errors = [];
 
   if (userName.trim().length < 3 || userName.trim().length > 50) {
-    errors.push('User name is too short or too long');
+    errors.push('user name is too short or too long');
   }
 
   if (!isEmailValid(userEmail)) {
-    errors.push('Email is not in a valid format');
+    errors.push('email is not in a valid format');
   }
 
   if (userMessage.trim().length < 25 || userMessage.trim().length > 1500) {
-    errors.push('User message is too short or too long');
+    errors.push('user message is too short or too long');
   }
 
-  if (honeypot.length > 0) {
-    errors.push('Bot detected');
+  if (honeypot.length !== 0) {
+    errors.push('bot detected');
   }
 
   if (errors.length !== 0) {
