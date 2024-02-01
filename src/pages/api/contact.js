@@ -4,15 +4,16 @@ export async function POST({ request }) {
   try {
     const requestData = await request.formData();
     const formData = getFormData(requestData);
-    const validatedFormData = validateFormData(formData);
-    const result = await sendEmail(validatedFormData);
 
-    return new Response(JSON.stringify('Form proccessing succeeded'), {
+    validateFormData(formData);
+    await sendEmail(formData);
+
+    return new Response(JSON.stringify('Form proccessed sucessfully'), {
       status: 200,
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error }), {
-      status: error.status,
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -22,30 +23,61 @@ export async function POST({ request }) {
 
 function getFormData(data) {
   const result = {};
-  result.userName = data.get('name');
-  result.userEmail = data.get('email');
-  result.userMessage = data.get('message');
+  result.userName = escapeInput(data.get('name'));
+  result.userEmail = escapeInput(data.get('email'));
+  result.userMessage = escapeInput(data.get('message'));
   result.userSubscribe = data.get('subscribe');
+  result.honeypot = data.get('honeypot');
   return result;
 }
 
-function validateFormData(formData) {
-  // validation
-  return formData;
+function escapeInput(input) {
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function validateFormData({ userName, userEmail, userMessage, honeypot }) {
+  const errors = [];
+
+  if (userName.trim().length < 3 || userName.trim().length > 50) {
+    errors.push('User name is too short or too long');
+  }
+
+  if (!isEmailValid(userEmail)) {
+    errors.push('Email is not in a valid format');
+  }
+
+  if (userMessage.trim().length < 25 || userMessage.trim().length > 1500) {
+    errors.push('User message is too short or too long');
+  }
+
+  if (honeypot.length > 0) {
+    errors.push('Bot detected');
+  }
+
+  if (errors.length !== 0) {
+    throw new Error(`Form validation failed: ${errors.join(', ')}`);
+  }
+
+  function isEmailValid(email) {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+$/;
+    return regex.test(email.trim());
+  }
 }
 
 async function sendEmail(userData) {
   const mailTransporter = setupMailTransporter();
   const mailDetails = prepareMailContent(userData);
 
-  let mailresult;
   try {
-    mailresult = await mailTransporter.sendMail(mailDetails);
+    return await mailTransporter.sendMail(mailDetails);
   } catch (error) {
-    console.log('Sending email failed: ', error);
+    throw new Error(`Failed to send email: ${error.message}`);
   }
-  console.log('Email sent: ', mailresult?.messageId);
-  return;
 }
 
 function setupMailTransporter() {

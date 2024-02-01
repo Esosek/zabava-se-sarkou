@@ -7,6 +7,4 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone',
   }),
-  // site: 'https://esosek.github.io',
-  // base: '/zabava-se-sarkou',
 });
