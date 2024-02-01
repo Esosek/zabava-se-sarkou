@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@astrojs/node": "^8.1.0",
-    "astro": "^4.2.4"
+    "astro": "^4.2.4",
+    "nodemailer": "^6.9.8"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.14"
   }
 }
