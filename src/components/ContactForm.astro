@@ -58,6 +58,7 @@
     });
     if (response.ok) {
       fireSubmitEvent();
+      formElement.reset();
     } else {
       const errorData = await response.json();
       console.error(response.status, errorData.error);
