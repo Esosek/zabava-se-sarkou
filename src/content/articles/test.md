@@ -1,6 +1,7 @@
 ---
 title: "Test"
 date: "2024-02-02"
+image: "/assets/images/uploads/moon-landing.png"
 ---
 
 # Test
@@ -10,8 +11,6 @@ Space exploration has reached new heights in 2024, with several missions highlig
 ## Lunar Missions
 
 The lunar surface has been the focus of international efforts, aiming to establish sustainable human presence by the end of the decade. The Artemis program, led by NASA, has successfully placed the first woman and the next man on the Moon, paving the way for future explorers.
-
-![Moon Landing](/assets/images/uploads/moon-landing.png)
 
 ## Mars and Beyond
 
