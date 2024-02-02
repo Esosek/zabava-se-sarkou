@@ -1,0 +1,13 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { article: 'jarni-dilnicky' } },
+    { params: { article: 'vanocni-divadlo-krtecek-a-vanoce' } },
+    { params: { article: 'co-delat-na-oslave' } },
+  ];
+}
+
+const { article } = Astro.params;
+---
+
+<h1>{article}</h1>
