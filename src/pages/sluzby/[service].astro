@@ -1,15 +1,16 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
   return services.map((service) => ({
     params: { service: service.slug },
+    props: { service },
   }));
 }
 
-const service = await getEntry('services', Astro.params.service);
+const { service } = Astro.props;
 const { title } = service.data;
 const { Content } = await service.render();
 ---
