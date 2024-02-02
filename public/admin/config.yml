@@ -4,6 +4,9 @@ backend:
 
 media_folder: 'public/images/uploads' # Media files will be stored in the repo under images/uploads
 public_folder: '/images/uploads' # The src attribute for uploaded media will begin with /images/uploads
+slug:
+  encoding: 'ascii'
+  clean_accents: true
 
 collections:
   - name: 'articles' # Used in routes, e.g., /admin/collections/blog
@@ -12,7 +15,7 @@ collections:
     create: true # Allow users to create new documents in this collection
     slug: '{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - { label: 'Název', name: 'title', widget: 'string' }
+      - { label: 'Nadpis', name: 'title', widget: 'string' }
       - { label: 'Datum', name: 'date', widget: 'datetime' }
       - { label: 'Obrázek', name: 'image', widget: 'image', required: false }
       - { label: 'Obsah', name: 'body', widget: 'markdown' }
@@ -22,7 +25,7 @@ collections:
     create: true
     slug: '{{slug}}'
     fields:
-      - { label: 'Název', name: 'title', widget: 'string' }
+      - { label: 'Nadpis', name: 'title', widget: 'string' }
       - { label: 'Obsah', name: 'body', widget: 'markdown' }
       # - { label: 'Datum', name: 'date', widget: 'datetime' }
       # - { label: 'Obrázek', name: 'image', widget: 'image' }
