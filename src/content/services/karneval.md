@@ -1,5 +1,4 @@
 ---
-slug: "karneval"
 title: "Karneval"
 ---
 

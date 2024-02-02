@@ -1,5 +1,4 @@
 ---
-slug: "test"
 title: "Test"
 date: "2024-02-02"
 ---

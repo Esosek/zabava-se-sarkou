@@ -1,5 +1,4 @@
 ---
-slug: "jarni-dilnicky"
 title: "Exciting Developments in Space Exploration"
 date: "2024-01-31"
 ---
