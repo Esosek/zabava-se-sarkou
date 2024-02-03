@@ -1,0 +1,29 @@
+:root {
+  --ff-primary: system-ui, sans-serif;
+
+  --fs-large: 2rem;
+  --fs-regular: 1rem;
+  --fs-small: 0.65rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--ff-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-group {
+  display: flex;
+  align-items: center;
+}
