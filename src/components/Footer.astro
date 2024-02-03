@@ -1,0 +1,20 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+  <div class="flex-group copyright">
+    <p>© {currentYear} Zábava se Šárkou</p>
+    <p>webové stránky vytvořil Aleš Zima</p>
+  </div>
+</footer>
+
+<style>
+  .flex-group {
+    justify-content: space-around;
+  }
+
+  .copyright {
+    font-size: var(--fs-small);
+  }
+</style>
