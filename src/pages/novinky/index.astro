@@ -1,7 +1,19 @@
 ---
+import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
+
+const articles = await getCollection('articles');
 ---
 
 <MainLayout title="Novinky">
   <h1>Novinky</h1>
+  <ul>
+    {
+      articles.map((article) => (
+        <li>
+          <a href={`/novinky/${article.slug}`}>{article.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
 </MainLayout>
