@@ -27,3 +27,8 @@ body {
   display: flex;
   align-items: center;
 }
+
+/* hide CMP revisit button */
+.cky-btn-revisit-wrapper {
+  display: none;
+}

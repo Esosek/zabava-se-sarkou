@@ -21,11 +21,10 @@ const currentYear = new Date().getFullYear();
 </style>
 
 <script>
-  const cookiesLink = document.getElementById('cookies-link');
-  cookiesLink.addEventListener('click', (event) => {
+  const cookiesLink = document.getElementById("cookies-link");
+  cookiesLink.addEventListener("click", (event) => {
     event.preventDefault();
-    const cookieBanner = document.querySelector('.cky-consent-container');
-    cookieBanner?.classList.toggle('cky-hide');
-    console.log('Cookies link was clicked');
+    const cookieBanner = document.querySelector(".cky-consent-container");
+    cookieBanner?.classList.toggle("cky-hide");
   });
 </script>
