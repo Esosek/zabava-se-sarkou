@@ -3,7 +3,16 @@
 
   --fs-large: 2rem;
   --fs-regular: 1rem;
-  --fs-small: 0.65rem;
+  --fs-small: 0.7rem;
+
+  --clr-primary-400: hsl(3, 78%, 69%);
+  --clr-secondary-400: hsl(7, 73%, 87%);
+  --clr-tertiary-400: hsl(83, 22%, 76%);
+
+  --clr-purple-400: hsl(252, 36%, 77%);
+
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-700: hsl(0, 0%, 27%);
 }
 
 * {
