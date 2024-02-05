@@ -1,14 +1,58 @@
+---
+const currentPage = Astro.url.pathname;
+---
+
 <nav>
   <ul class="flex-group">
-    <li><a href="/">Úvod</a></li>
-    <li><a href="/o-mne">O mně</a></li>
-    <li><a href="/sluzby">Služby</a></li>
-    <li><a href="/cenik">Ceník</a></li>
-    <li><a href="/galerie">Galerie</a></li>
-    <li><a href="/novinky">Novinky</a></li>
-    <li><a href="/mysak-ocko">Myšák Očko</a></li>
-    <li><a href="/reference">Reference</a></li>
-    <li><a href="/kontakt">Kontakt</a></li>
+    <li>
+      <a class={currentPage === '/' ? 'active' : ''} href="/">Úvod</a>
+    </li>
+    <li>
+      <a class={currentPage.startsWith('/o-mne') ? 'active' : ''} href="/o-mne"
+        >O mně</a
+      >
+    </li>
+    <li>
+      <a
+        class={currentPage.startsWith('/sluzby') ? 'active' : ''}
+        href="/sluzby">Služby</a
+      >
+    </li>
+    <li>
+      <a class={currentPage.startsWith('/cenik') ? 'active' : ''} href="/cenik"
+        >Ceník</a
+      >
+    </li>
+    <li>
+      <a
+        class={currentPage.startsWith('/galerie') ? 'active' : ''}
+        href="/galerie">Galerie</a
+      >
+    </li>
+    <li>
+      <a
+        class={currentPage.startsWith('/novinky') ? 'active' : ''}
+        href="/novinky">Novinky</a
+      >
+    </li>
+    <li>
+      <a
+        class={currentPage.startsWith('/mysak-ocko') ? 'active' : ''}
+        href="/mysak-ocko">Myšák Očko</a
+      >
+    </li>
+    <li>
+      <a
+        class={currentPage.startsWith('/reference') ? 'active' : ''}
+        href="/reference">Reference</a
+      >
+    </li>
+    <li>
+      <a
+        class={currentPage.startsWith('/kontakt') ? 'active' : ''}
+        href="/kontakt">Kontakt</a
+      >
+    </li>
   </ul>
 </nav>
 
@@ -28,6 +72,10 @@
 
   a:hover,
   a:focus {
+    color: var(--clr-primary-400);
+  }
+
+  .active {
     color: var(--clr-primary-400);
   }
 </style>
