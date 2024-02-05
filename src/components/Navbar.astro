@@ -1,5 +1,5 @@
 <nav>
-  <ul>
+  <ul class="flex-group">
     <li><a href="/">Úvod</a></li>
     <li><a href="/o-mne">O mně</a></li>
     <li><a href="/sluzby">Služby</a></li>
@@ -14,11 +14,20 @@
 
 <style>
   ul {
-    display: flex;
-    gap: 1rem;
+    justify-content: center;
+    gap: 1rem 2rem;
     list-style: none;
   }
   a {
     text-transform: uppercase;
+    color: var(--clr-neutral-100);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-medium);
+    transition: color 150ms;
+  }
+
+  a:hover,
+  a:focus {
+    color: var(--clr-primary-400);
   }
 </style>

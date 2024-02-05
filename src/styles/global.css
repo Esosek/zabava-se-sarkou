@@ -2,8 +2,12 @@
   --ff-primary: system-ui, sans-serif;
 
   --fs-large: 2rem;
+  --fs-medium: 1.2rem;
   --fs-regular: 1rem;
   --fs-small: 0.7rem;
+
+  --fw-regular: 400;
+  --fw-bold: 700;
 
   --clr-primary-400: hsl(3, 78%, 69%);
   --clr-secondary-400: hsl(7, 73%, 87%);
@@ -32,9 +36,19 @@ body {
   flex-direction: column;
 }
 
+a {
+  text-decoration: none;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+}
+
 .flex-group {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 /* hide CMP revisit button */
