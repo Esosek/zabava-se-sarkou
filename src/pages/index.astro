@@ -112,6 +112,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 
   .testimonial:last-of-type {
     justify-self: end;
+    margin-bottom: 1rem;
   }
 
   .testimonial-author {
@@ -147,5 +148,14 @@ import MainLayout from '../layouts/MainLayout.astro';
   .circle--left {
     left: -3rem;
     bottom: -1.5rem;
+  }
+
+  @media only screen and (max-width: 800px) {
+    img {
+      max-width: 100%;
+    }
+    .img-top {
+      box-shadow: -10px -10px 0 0 var(--clr-secondary-400);
+    }
   }
 </style>

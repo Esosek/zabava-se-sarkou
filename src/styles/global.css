@@ -43,8 +43,14 @@ body {
   display: flex;
   flex-direction: column;
   margin-inline: auto;
-  padding: 1rem 2rem 0;
+  padding-top: 1rem;
   max-width: 1200px;
+}
+
+@media only screen and (min-width: 800px) {
+  body {
+    padding: 1rem 2rem 0;
+  }
 }
 
 p {
@@ -89,6 +95,22 @@ button:focus {
 .btn--primary:focus {
   color: var(--clr-primary-400);
   background-color: var(--clr-neutral-100);
+}
+
+.icon-link,
+.icon-btn {
+  fill: var(--clr-neutral-700);
+  transition: fill 200ms;
+}
+
+.icon-link {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon-btn {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 /* hide CMP revisit button */
