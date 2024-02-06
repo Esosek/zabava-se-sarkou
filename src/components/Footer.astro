@@ -11,6 +11,14 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <style>
+  footer {
+    background-color: var(--clr-secondary-400);
+    text-align: center;
+    padding: 1rem 2rem 0;
+    margin-top: 2rem;
+    border-radius: 1rem 1rem 0 0;
+  }
+
   .flex-group {
     justify-content: space-around;
   }
@@ -18,13 +26,18 @@ const currentYear = new Date().getFullYear();
   .copyright {
     font-size: var(--fs-small);
   }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
 </style>
 
 <script>
-  const cookiesLink = document.getElementById("cookies-link");
-  cookiesLink.addEventListener("click", (event) => {
+  const cookiesLink = document.getElementById('cookies-link');
+  cookiesLink.addEventListener('click', (event) => {
     event.preventDefault();
-    const cookieBanner = document.querySelector(".cky-consent-container");
-    cookieBanner?.classList.toggle("cky-hide");
+    const cookieBanner = document.querySelector('.cky-consent-container');
+    cookieBanner?.classList.toggle('cky-hide');
   });
 </script>
