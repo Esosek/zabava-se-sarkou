@@ -1,28 +1,34 @@
 <form class="submit-form" method="POST">
   <div>
     <label for="name">Jméno a příjmení</label>
-    <input name="name" type="text" required />
+    <input id="name" name="name" type="text" autocomplete="name" required />
   </div>
 
   <div>
     <label for="email">Email</label>
-    <input name="email" type="email" required />
+    <input id="email" name="email" type="email" autocomplete="email" required />
   </div>
 
   <div>
     <label for="message">Zpráva</label>
-    <textarea name="message" required></textarea>
+    <textarea id="message" name="message" required></textarea>
   </div>
 
   <div>
-    <input name="subscribe" type="checkbox" />
+    <input id="subscribe" name="subscribe" type="checkbox" />
     <label for="subscribe"
       >Chci dostávat e-mailem novinky a upozornění na nové programy.</label
     >
   </div>
 
   <div class="phone-input">
-    <input name="user-number" type="text" value="" tabindex="-1" />
+    <input
+      id="user-number"
+      name="user-number"
+      type="text"
+      value=""
+      tabindex="-1"
+    />
   </div>
 
   <button type="submit">Odeslat</button>

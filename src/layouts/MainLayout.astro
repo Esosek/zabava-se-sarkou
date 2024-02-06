@@ -19,24 +19,31 @@ const { title } = Astro.props;
     <title>{title} | Zábava se Šárkou</title>
     <!-- <CMP /> -->
     <!-- <GoogleAnalytics /> -->
-    <NetlifyIdentityWidget />
+    <!-- <NetlifyIdentityWidget /> -->
   </head>
   <body>
     <Header />
 
-    <main class="content-wrap">
+    <main>
       <Navbar />
       <slot />
     </main>
 
     <Footer />
     <style>
-      .content-wrap {
+      main {
         flex: 1;
         color: var(--clr-neutral-100);
         background-color: var(--clr-purple-400);
         border-radius: 15px;
         padding: 1.5rem;
+      }
+
+      @media only screen and (max-width: 800px) {
+        main {
+          margin-top: 3rem;
+          border-radius: 0 0 15px 15px;
+        }
       }
     </style>
   </body>

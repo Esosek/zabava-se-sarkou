@@ -4,6 +4,14 @@ import ContactForm from '../components/ContactForm.astro';
 ---
 
 <MainLayout title="Kontakt">
-  <h1>Kontakt</h1>
-  <ContactForm />
+  <div class="content-wrap">
+    <ContactForm />
+  </div>
 </MainLayout>
+
+<style>
+  .content-wrap {
+    display: grid;
+    justify-content: center;
+  }
+</style>
