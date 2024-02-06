@@ -1,9 +1,54 @@
 ---
+import OrderButton from '../components/OrderButton.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout title="Úvod">
-  <p>Hledáte zábavu?</p>
+  <div class="content">
+    <img
+      class="img-top"
+      src="/images/home_image_01.webp"
+      alt="Šárka usmívající se a oblečená v červeno černém oblečení s červeným kloboukem"
+    />
+
+    <div>
+      <p class="introduction-text">
+        Hledáte program, který bude děti skutečně bavit a zároveň je hravou
+        formou něco naučí? Chcete upsořádat parádní narozeninovou oslavu,
+        karneval či akci ve vaší školce? Pak jste tu správně!
+      </p>
+      <OrderButton>Objednat zábavu</OrderButton>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>20.6.2023</p>
+        <p>
+          "Šárka byla naprosto spolehlivá, vytvořila dětem originální zábavu a
+          já mohla prožít svatbu bez starostí o nejmenší. Všichni rodice byli
+          nadšení."
+        </p>
+        <p class="testimonial-author text-float--right">-Aneta 36, nevěsta</p>
+        <div class="circle circle--right"></div>
+      </div>
+      <div class="testimonial">
+        <p>3.10.2023</p>
+        <p>
+          "Zábavu se Šárkou k nám do školy zveme každý měsíc na autorská
+          divadla. Děti se vždy nemohou dočkat."
+        </p>
+        <p class="testimonial-author text-float--left">
+          -Zuzana 28, učitelka v mateřské školce
+        </p>
+        <div class="circle circle--left"></div>
+      </div>
+    </div>
+    <img
+      class="img-bottom"
+      src="/images/home_image_02.webp"
+      alt="Šárka maluje motýlka na obličej malé dívce"
+    />
+  </div>
 
   <!-- Netlify Identity redirect -->
   <script is:inline>
@@ -18,3 +63,88 @@ import MainLayout from '../layouts/MainLayout.astro';
     }
   </script>
 </MainLayout>
+
+<style>
+  img {
+    border-radius: 20px;
+    object-fit: cover;
+    max-width: 20rem;
+  }
+
+  .img-top {
+    box-shadow: -20px -20px 0 0 var(--clr-secondary-400);
+  }
+
+  .img-bottom {
+    height: 20rem;
+    box-shadow: 10px 10px 0 0 var(--clr-secondary-400);
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    padding: 2rem;
+    gap: 4rem 2rem;
+  }
+
+  .introduction-text {
+    max-width: 25rem;
+    margin-top: 2rem;
+  }
+
+  .testimonials {
+    display: grid;
+    gap: 4rem;
+    width: 100%;
+  }
+
+  .testimonial {
+    position: relative;
+    font-weight: var(--fw-regular);
+    background-color: var(--clr-tertiary-400);
+    border-radius: 10px;
+    padding-inline: 1rem;
+    max-width: 15rem;
+    justify-self: center;
+  }
+
+  .testimonial:last-of-type {
+    justify-self: end;
+  }
+
+  .testimonial-author {
+    font-size: var(--fs-medium);
+    position: relative;
+    z-index: 5;
+    margin-top: 1rem;
+  }
+
+  .text-float--right {
+    text-align: right;
+    right: -2em;
+  }
+
+  .text-float--left {
+    text-align: left;
+    left: -2em;
+  }
+
+  .circle {
+    position: absolute;
+    bottom: -2rem;
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--clr-secondary-400);
+    border-radius: 50%;
+  }
+
+  .circle--right {
+    right: -3rem;
+  }
+
+  .circle--left {
+    left: -3rem;
+    bottom: -1.5rem;
+  }
+</style>
