@@ -116,7 +116,7 @@ const currentPage = Astro.url.pathname;
       min-width: 60%;
       margin: 0;
       z-index: 100;
-      transition: right 200ms;
+      transition: right 250ms ease-out;
     }
 
     #main-navbar.open {
@@ -137,8 +137,6 @@ const currentPage = Astro.url.pathname;
 
     .close-btn {
       display: block;
-      background: none;
-      border: none;
       align-self: flex-end;
       margin: 10px;
     }

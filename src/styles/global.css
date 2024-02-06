@@ -17,6 +17,7 @@
   --clr-purple-400: hsl(252, 36%, 77%);
 
   --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-400: hsl(0, 0%, 50%);
   --clr-neutral-700: hsl(0, 0%, 27%);
   --clr-neutral-900: hsl(0, 0%, 0%);
 }
@@ -67,6 +68,11 @@ img,
 svg {
   display: inline-block;
   max-width: 100%;
+}
+
+button {
+  background: none;
+  border: none;
 }
 
 button:hover,

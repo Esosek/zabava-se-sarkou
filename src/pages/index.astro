@@ -11,7 +11,7 @@ import MainLayout from '../layouts/MainLayout.astro';
       alt="Šárka usmívající se a oblečená v červeno černém oblečení s červeným kloboukem"
     />
 
-    <div>
+    <div class="introduction">
       <p class="introduction-text">
         Hledáte program, který bude děti skutečně bavit a zároveň je hravou
         formou něco naučí? Chcete upsořádat parádní narozeninovou oslavu,
@@ -156,6 +156,10 @@ import MainLayout from '../layouts/MainLayout.astro';
     }
     .img-top {
       box-shadow: -10px -10px 0 0 var(--clr-secondary-400);
+    }
+
+    .introduction {
+      order: -1;
     }
   }
 </style>
