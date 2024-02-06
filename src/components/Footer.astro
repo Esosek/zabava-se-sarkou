@@ -1,9 +1,14 @@
 ---
+import Media from './Media.astro';
+
 const currentYear = new Date().getFullYear();
 ---
 
 <footer>
   <a href="javascript:void(0);" id="cookies-link">Nastavení cookies</a>
+  <div class="media">
+    <Media />
+  </div>
   <div class="flex-group copyright">
     <p>© {currentYear} Zábava se Šárkou</p>
     <p>webové stránky vytvořil Aleš Zima</p>
@@ -17,6 +22,8 @@ const currentYear = new Date().getFullYear();
     padding: 1rem 2rem 0;
     margin-top: 2rem;
     border-radius: 1rem 1rem 0 0;
+    display: grid;
+    gap: 1.5rem;
   }
 
   .flex-group {
@@ -24,13 +31,22 @@ const currentYear = new Date().getFullYear();
   }
 
   .copyright {
-    margin-top: 2rem;
     font-size: var(--fs-small);
   }
 
   a:hover,
   a:focus {
     text-decoration: underline;
+  }
+
+  .media {
+    display: none;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .media {
+      display: block;
+    }
   }
 </style>
 
