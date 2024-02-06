@@ -2,6 +2,7 @@
 const currentPage = Astro.url.pathname;
 ---
 
+<div class="backdrop"></div>
 <nav id="main-navbar">
   <ul class="flex-group">
     <button class="close-btn"
@@ -69,13 +70,19 @@ const currentPage = Astro.url.pathname;
 
 <script>
   const mainNavbar = document.getElementById('main-navbar');
+  const backdrop = document.querySelector('.backdrop');
   const closeBtn = mainNavbar.querySelector('.close-btn');
   closeBtn.addEventListener('click', () => {
     mainNavbar.classList.toggle('open');
+    backdrop.classList.toggle('open');
   });
 </script>
 
 <style>
+  .backdrop {
+    display: none;
+  }
+
   #main-navbar {
     margin-bottom: 1rem;
   }
@@ -107,6 +114,20 @@ const currentPage = Astro.url.pathname;
   }
 
   @media only screen and (max-width: 800px) {
+    .backdrop {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: hsla(0, 0%, 0%, 50%);
+      top: 0;
+      left: 0;
+      z-index: 90;
+    }
+
+    .backdrop.open {
+      display: block;
+    }
+
     #main-navbar {
       position: fixed;
       background-color: var(--clr-primary-400);

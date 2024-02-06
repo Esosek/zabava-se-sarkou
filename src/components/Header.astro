@@ -28,8 +28,10 @@ import Media from './Media.astro';
 <script>
   const mainNavbar = document.getElementById('main-navbar');
   const menuBtn = document.querySelector('.menu-btn');
+  const backdrop = document.querySelector('.backdrop');
   menuBtn.addEventListener('click', () => {
     mainNavbar.classList.toggle('open');
+    backdrop.classList.toggle('open');
   });
 </script>
 
