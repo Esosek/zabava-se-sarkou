@@ -82,10 +82,11 @@ import MainLayout from '../layouts/MainLayout.astro';
 
   .content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, calc(50% - 2rem)));
     justify-items: center;
+    justify-content: center;
     padding: 2rem;
-    gap: 4rem 2rem;
+    gap: 2rem;
   }
 
   .introduction-text {
