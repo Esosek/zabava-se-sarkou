@@ -3,7 +3,7 @@ import Media from './Media.astro';
 ---
 
 <header>
-  <h1>Zábava se Šárkou</h1>
+  <p class="slogan">Zábava se Šárkou</p>
   <img
     class="logo-img"
     src="/images/logo.png"
@@ -34,9 +34,10 @@ import Media from './Media.astro';
 </script>
 
 <style>
-  h1 {
+  .slogan {
     color: var(--clr-primary-400);
     font-size: 4.5rem;
+    font-weight: var(--fw-bold);
     margin: 1rem;
   }
   header {
