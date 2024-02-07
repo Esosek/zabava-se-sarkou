@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 
 const services = await getCollection('services');
-const program = Astro.url.searchParams.get('program');
+const program = Astro.url.searchParams.get('p');
 ---
 
 <form class="submit-form" method="POST">
