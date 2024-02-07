@@ -27,6 +27,7 @@ function getFormData(data) {
   const result = {};
   result.userName = escapeInput(data.get('name'));
   result.userEmail = escapeInput(data.get('email'));
+  result.selectedService = escapeInput(data.get('service-select'));
   result.userMessage = escapeInput(data.get('message'));
   result.userSubscribe = data.get('subscribe');
   result.honeypot = data.get('user-number');
@@ -45,6 +46,7 @@ function escapeInput(input) {
 function validateFormData({
   userName,
   userEmail,
+  selectedService,
   userMessage,
   userSubscribe,
   honeypot,
@@ -57,6 +59,10 @@ function validateFormData({
 
   if (!isEmailValid(userEmail)) {
     errors.push('email is not in a valid format');
+  }
+
+  if (!isServiceValid(selectedService)) {
+    errors.push('selected service is not valid');
   }
 
   if (userMessage.trim().length < 25 || userMessage.trim().length > 1500) {
@@ -74,6 +80,11 @@ function validateFormData({
   function isEmailValid(email) {
     const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+$/;
     return regex.test(email.trim());
+  }
+
+  function isServiceValid(service) {
+    const regex = /[\p{L}-]/gu;
+    return regex.test(service.trim());
   }
 }
 
@@ -116,13 +127,15 @@ function setupMailTransporter() {
 function prepareMailContent({
   userName,
   userEmail,
+  selectedService,
   userMessage,
   userSubscribe,
 }) {
   const emailTo = import.meta.env.EMAIL_TO_ADDRESS;
   const content = `<div>
   <p><strong>Email:</strong> ${userEmail}</p>
-  <p><strong>Jméno:</strong> ${userName}</p>    
+  <p><strong>Jméno:</strong> ${userName}</p>
+  <p><strong>Vybraný program:</strong> ${selectedService}</p>
   <p><strong>Zpráva:</strong> ${userMessage}</p>
   <p><strong>Přihlášení k odběru:</strong> ${
     userSubscribe === 'on' ? 'ano' : 'ne'

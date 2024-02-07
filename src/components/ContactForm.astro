@@ -1,3 +1,9 @@
+---
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+---
+
 <form class="submit-form" method="POST">
   <div>
     <label for="name">Jméno a příjmení</label>
@@ -7,6 +13,18 @@
   <div>
     <label for="email">Email</label>
     <input id="email" name="email" type="email" autocomplete="email" required />
+  </div>
+
+  <div>
+    <label for="service-select">Program</label>
+    <select id="service-select" name="service-select">
+      <option value="zadny">Žádný</option>
+      {
+        services.map((service) => (
+          <option value={service.slug}>{service.data.title}</option>
+        ))
+      }
+    </select>
   </div>
 
   <div>
@@ -72,7 +90,11 @@
   }
 
   function fireSubmitEvent() {
-    gtag('event', 'form_submit');
+    try {
+      gtag('event', 'form_submit');
+    } catch (error) {
+      console.warn('Submit event failed:', error);
+    }
   }
 </script>
 
