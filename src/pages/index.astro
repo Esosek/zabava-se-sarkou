@@ -6,7 +6,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 <MainLayout title="Úvod">
   <div class="content">
     <img
-      class="img-top"
+      class="content-img sh-top-large sh-left-large"
       src="/images/home_image_01.webp"
       alt="Šárka usmívající se a oblečená v červeno černém oblečení s červeným kloboukem"
     />
@@ -44,7 +44,7 @@ import MainLayout from '../layouts/MainLayout.astro';
       </div>
     </div>
     <img
-      class="img-bottom"
+      class="content-img--square sh-right-small sh-bottom-small"
       src="/images/home_image_02.webp"
       alt="Šárka maluje motýlka na obličej malé dívce"
     />
@@ -65,21 +65,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 </MainLayout>
 
 <style>
-  img {
-    border-radius: 20px;
-    object-fit: cover;
-    max-width: 20rem;
-  }
-
-  .img-top {
-    box-shadow: -20px -20px 0 0 var(--clr-secondary-400);
-  }
-
-  .img-bottom {
-    height: 20rem;
-    box-shadow: 10px 10px 0 0 var(--clr-secondary-400);
-  }
-
   .content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18.5rem, calc(50% - 2rem)));
@@ -152,13 +137,6 @@ import MainLayout from '../layouts/MainLayout.astro';
   }
 
   @media only screen and (max-width: 800px) {
-    img {
-      max-width: 100%;
-    }
-    .img-top {
-      box-shadow: -10px -10px 0 0 var(--clr-secondary-400);
-    }
-
     .introduction {
       order: -1;
       text-align: center;

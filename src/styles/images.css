@@ -1,0 +1,65 @@
+.content-img,
+.content-img--square {
+  --_vertical-shadow: var(--vertical-shadow, 0);
+  --_horizontal-shadow: var(--horizontal-shadow, 0);
+
+  border-radius: 20px;
+  object-fit: cover;
+  max-width: 20rem;
+  box-shadow: var(--_vertical-shadow) var(--_horizontal-shadow) 0 0
+    var(--clr-secondary-400);
+}
+
+.content-img--square {
+  height: 20rem;
+}
+
+.sh-top-small {
+  --vertical-shadow: -10px;
+}
+
+.sh-top-large {
+  --vertical-shadow: -20px;
+}
+
+.sh-right-small {
+  --horizontal-shadow: -10px;
+}
+
+.sh-right-large {
+  --horizontal-shadow: -20px;
+}
+
+.sh-bottom-small {
+  --vertical-shadow: 10px;
+}
+
+.sh-bottom-large {
+  --vertical-shadow: 20px;
+}
+
+.sh-left-small {
+  --horizontal-shadow: -10px;
+}
+
+.sh-left-large {
+  --horizontal-shadow: -20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .content-img {
+    max-width: 100%;
+  }
+  .sh-top-large {
+    --vertical-shadow: -10px;
+  }
+  .sh-right-large {
+    --horizontal-shadow: 10px;
+  }
+  .sh-bottom-large {
+    --vertical-shadow: 10px;
+  }
+  .sh-left-large {
+    --horizontal-shadow: -10px;
+  }
+}
