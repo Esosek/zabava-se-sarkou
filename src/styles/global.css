@@ -90,9 +90,11 @@ button:focus {
   color: var(--clr-neutral-100);
   background-color: var(--clr-primary-400);
   padding: 1rem 2rem;
+  margin-block: 1.5rem;
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: var(--fw-bold);
+  font-size: var(--fs-regular);
   border: 2px solid var(--clr-primary-400);
   transition: color 150ms, background-color 150ms;
 }
