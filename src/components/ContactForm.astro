@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 
 const services = await getCollection('services');
+const program = Astro.url.searchParams.get('program');
 ---
 
 <form class="submit-form" method="POST">
@@ -51,6 +52,11 @@ const services = await getCollection('services');
 
   <button class="btn--primary" type="submit">Odeslat</button>
 </form>
+
+<script define:vars={{ program }}>
+  const selectElement = document.getElementById('service-select');
+  selectElement.value = program ?? 'zadny';
+</script>
 
 <script is:inline>
   const formElement = document.querySelector('.submit-form');
