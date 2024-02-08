@@ -17,8 +17,9 @@
   --clr-purple-400: hsl(252, 36%, 77%);
 
   --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-netural-200: hsl(0, 0%, 96%);
   --clr-neutral-400: hsl(0, 0%, 50%);
-  --clr-neutral-700: hsl(0, 0%, 27%);
+  --clr-neutral-700: hsl(0, 0%, 20%);
   --clr-neutral-900: hsl(0, 0%, 0%);
 }
 
@@ -41,6 +42,8 @@ body {
   font-family: var(--ff-primary);
   font-weight: var(--fw-light);
   font-size: var(--fs-regular);
+  color: var(--clr-neutral-700);
+  background-color: var(--clr-netural-200);
   display: flex;
   flex-direction: column;
   margin-inline: auto;
@@ -80,6 +83,20 @@ button:focus {
   cursor: pointer;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .flex-group {
   display: flex;
   align-items: center;
@@ -87,7 +104,6 @@ button:focus {
 }
 
 .btn--primary {
-  color: var(--clr-neutral-100);
   background-color: var(--clr-primary-400);
   padding: 1rem 2rem;
   margin-block: 1.5rem;
@@ -96,13 +112,12 @@ button:focus {
   font-weight: var(--fw-bold);
   font-size: var(--fs-regular);
   border: 2px solid var(--clr-primary-400);
-  transition: color 150ms, background-color 150ms;
+  transition: background-color 300ms;
 }
 
 .btn--primary:hover,
 .btn--primary:focus {
-  color: var(--clr-primary-400);
-  background-color: var(--clr-neutral-100);
+  background-color: transparent;
 }
 
 .icon-link,
