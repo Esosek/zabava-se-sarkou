@@ -5,12 +5,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout title="Úvod">
   <div class="content">
-    <img
-      class="content-img sh-top-large sh-left-large"
-      src="/images/home_image_01.webp"
-      alt="Šárka usmívající se a oblečená v červeno černém oblečení s červeným kloboukem"
-    />
-
     <div class="introduction">
       <p class="introduction-text">
         Hledáte program, který bude děti skutečně bavit a zároveň je hravou
@@ -19,6 +13,18 @@ import MainLayout from '../layouts/MainLayout.astro';
       </p>
       <OrderButton>Objednat zábavu</OrderButton>
     </div>
+
+    <img
+      class="content-img sh-top-large sh-left-large"
+      src="/images/home_image_01.webp"
+      alt="Šárka usmívající se a oblečená v červeno černém oblečení s červeným kloboukem"
+    />
+
+    <img
+      class="content-img--square sh-right-small sh-bottom-small"
+      src="/images/home_image_02.webp"
+      alt="Šárka maluje motýlka na obličej malé dívce"
+    />
 
     <div class="testimonials">
       <div class="testimonial">
@@ -43,11 +49,6 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="circle circle--left"></div>
       </div>
     </div>
-    <img
-      class="content-img--square sh-right-small sh-bottom-small"
-      src="/images/home_image_02.webp"
-      alt="Šárka maluje motýlka na obličej malé dívce"
-    />
   </div>
 
   <!-- Netlify Identity redirect -->
@@ -71,7 +72,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     justify-items: center;
     justify-content: center;
     padding: 2rem;
-    gap: 2rem;
+    gap: 4rem;
   }
 
   .introduction-text {
@@ -138,12 +139,15 @@ import MainLayout from '../layouts/MainLayout.astro';
 
   @media only screen and (max-width: 800px) {
     .introduction {
-      order: -1;
       text-align: center;
     }
 
     .introduction-text {
       margin-top: initial;
+    }
+
+    img:last-of-type {
+      order: 1;
     }
   }
 </style>
