@@ -6,19 +6,26 @@ import MainLayout from '../layouts/MainLayout.astro';
   <div class="flow">
     <h1>O mně</h1>
     <div class="grid">
-      <div class="text flow">
-        <p>
-          Jsem absolventkou Pedagogické fakulty Masarykovy univerzity. Během
-          studia jsem se věnovala také hudební výchově a umění. Externě jsem
-          čtyři roky docházela na hodiny klasického zpěvu na JAMU k operní
-          pěvkyni Anně Barové.
-        </p>
-        <p>
-          Při škole jsem také učila v hudební škole YAMAHA, kde jsem vedla
-          kroužky Rytmické krůčky pro děti a Populární zpěv pro mládež. Mám
-          zkušenosti s vedením hudebních aktivit pro různé věkové skupiny.
-        </p>
-      </div>
+      <p>
+        Jsem absolventkou Pedagogické fakulty Masarykovy univerzity. Během
+        studia jsem se věnovala také hudební výchově a umění. Externě jsem čtyři
+        roky docházela na hodiny klasického zpěvu na JAMU k operní pěvkyni Anně
+        Barové.
+      </p>
+
+      <p>
+        Při škole jsem také učila v hudební škole YAMAHA, kde jsem vedla kroužky
+        Rytmické krůčky pro děti a Populární zpěv pro mládež. Mám zkušenosti s
+        vedením hudebních aktivit pro různé věkové skupiny.
+      </p>
+      <p>
+        Kromě toho skládám vlastní hudbu a mám za sebou publikování knih s
+        názvem
+        <a href="/mysak-ocko">Myšák Očko</a>. Ve volném čase se ráda věnuji
+        hudbě a práci na svém projektu Myšák Očko. Mým snem je naplno pracovat
+        jako animátor pro děti, což mě naplňuje a nabíjí energií. Těším se na
+        spolupráci s vámi a na čas strávený s vašimi dětmi.
+      </p>
 
       <img
         src="/images/o-mne.webp"
@@ -26,13 +33,7 @@ import MainLayout from '../layouts/MainLayout.astro';
         class="content-img sh-bottom-large sh-right-large"
       />
     </div>
-    <p class="paragraph-long">
-      Kromě toho skládám vlastní hudbu a mám za sebou publikování knih s názvem
-      <a href="/mysak-ocko">Myšák Očko</a>. Ve volném čase se ráda věnuji hudbě
-      a práci na svém projektu Myšák Očko. Mým snem je naplno pracovat jako
-      animátor pro děti, což mě naplňuje a nabíjí energií. Těším se na
-      spolupráci s vámi a na čas strávený s vašimi dětmi.
-    </p>
+
     <p class="quote">
       "Děti, které se ptají PROČ, jsou ty, které změní svět." - Neal Thompson
     </p>
@@ -43,16 +44,18 @@ import MainLayout from '../layouts/MainLayout.astro';
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 0 4rem;
   }
 
   img {
     justify-self: center;
-    height: 350px;
+    grid-row: 1 / 4;
+    grid-column: 2 / 3;
   }
 
-  .paragraph-long {
-    max-width: 90ch;
+  p {
+    grid-column: 1 / 2;
+    margin-bottom: 1rem;
   }
 
   .quote {
@@ -63,6 +66,12 @@ import MainLayout from '../layouts/MainLayout.astro';
   @media only screen and (max-width: 800px) {
     .grid {
       grid-template-columns: 1fr;
+    }
+
+    img {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      margin-block: 2rem;
     }
   }
 </style>
