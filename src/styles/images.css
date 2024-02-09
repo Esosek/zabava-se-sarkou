@@ -48,9 +48,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .content-img {
-    max-width: 100%;
-  }
   .sh-top-large {
     --vertical-shadow: -10px;
   }
