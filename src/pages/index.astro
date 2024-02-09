@@ -4,7 +4,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 ---
 
 <MainLayout title="Úvod">
-  <div class="content">
+  <div class="grid">
     <div class="introduction">
       <p class="introduction-text">
         Hledáte program, který bude děti skutečně bavit a zároveň je hravou
@@ -66,7 +66,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 </MainLayout>
 
 <style>
-  .content {
+  .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18.5rem, calc(50% - 2rem)));
     justify-items: center;

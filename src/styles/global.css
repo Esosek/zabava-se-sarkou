@@ -58,6 +58,10 @@ body {
   }
 }
 
+h1 {
+  font-size: var(--fs-large);
+}
+
 p {
   margin-block: 0.5rem;
   line-height: 1.5;

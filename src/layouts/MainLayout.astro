@@ -27,9 +27,7 @@ const { title } = Astro.props;
 
     <main>
       <Navbar />
-      <div class="content">
-        <slot />
-      </div>
+      <slot />
     </main>
 
     <Footer />
@@ -38,17 +36,14 @@ const { title } = Astro.props;
         flex: 1;
         background-color: var(--clr-purple-400);
         border-radius: 15px;
-        padding: 1.5rem;
-      }
-
-      .content {
-        padding-inline: 2rem;
+        padding: 1.5rem 3.5rem;
       }
 
       @media only screen and (max-width: 800px) {
         main {
           margin-top: 3rem;
           border-radius: 0 0 15px 15px;
+          padding: 1.5rem;
         }
       }
     </style>
