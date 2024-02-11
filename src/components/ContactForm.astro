@@ -7,17 +7,21 @@ import { getReservedDates } from '../server/calendar/events';
 const services = await getCollection('services');
 const program = Astro.url.searchParams.get('p');
 
-const reservedDates = await getReservedDates();
+const reservedDates: any = await getReservedDates();
 ---
 
 <form class="submit-form" method="POST">
-  <input
-    id="datepicker"
-    class="flatpickr flatpickr-input"
-    type="text"
-    placeholder="Vybrat datum"
-    readonly="readonly"
-  />
+  {
+    !reservedDates.error && (
+      <input
+        id="datepicker"
+        class="flatpickr flatpickr-input"
+        type="text"
+        placeholder="Vybrat datum"
+        readonly="readonly"
+      />
+    )
+  }
   <div>
     <label for="name">Jméno a příjmení</label>
     <input id="name" name="name" type="text" autocomplete="name" required />
@@ -72,10 +76,19 @@ const reservedDates = await getReservedDates();
 </script>
 
 <script is:inline define:vars={{ reservedDates }}>
+  const today = new Date();
+  const threeDaysFromNow = new Date(today);
+  threeDaysFromNow.setDate(today.getDate() + 3);
+
+  const todayNextYear = new Date(today);
+  todayNextYear.setFullYear(today.getFullYear() + 1);
+
   document.addEventListener('DOMContentLoaded', function () {
     flatpickr('#datepicker', {
       disable: reservedDates,
       dateFormat: 'Y-m-d',
+      minDate: threeDaysFromNow,
+      maxDate: todayNextYear,
     });
   });
 
@@ -132,16 +145,15 @@ const reservedDates = await getReservedDates();
 </style>
 
 <style is:inline>
-  .flatpickr-disabled::after {
+  .flatpickr-day:not(.flatpickr-disabled)::after {
+    --underline-width: 15px;
     content: '';
     display: inline-block;
     position: absolute;
-    bottom: 2.5px;
-    left: calc(50% - 3.5px);
-    width: 7px;
-    height: 7px;
+    left: calc(50% - var(--underline-width) / 2);
+    bottom: calc(var(--underline-width) / 2);
+    width: var(--underline-width);
+    height: 1px;
     background-color: var(--clr-primary-400);
-    border-radius: 50%;
   }
 </style>
-../server/calendar/calendar
