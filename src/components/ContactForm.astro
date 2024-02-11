@@ -1,11 +1,23 @@
 ---
+import 'flatpickr/dist/flatpickr.min.css';
+
 import { getCollection } from 'astro:content';
+import { getReservedDates } from '../server/calendar/events';
 
 const services = await getCollection('services');
 const program = Astro.url.searchParams.get('p');
+
+const reservedDates = await getReservedDates();
 ---
 
 <form class="submit-form" method="POST">
+  <input
+    id="datepicker"
+    class="flatpickr flatpickr-input"
+    type="text"
+    placeholder="Vybrat datum"
+    readonly="readonly"
+  />
   <div>
     <label for="name">Jméno a příjmení</label>
     <input id="name" name="name" type="text" autocomplete="name" required />
@@ -52,13 +64,21 @@ const program = Astro.url.searchParams.get('p');
 
   <button class="btn--primary" type="submit">Odeslat</button>
 </form>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script define:vars={{ program }}>
   const selectElement = document.getElementById('service-select');
   selectElement.value = program ?? 'zadny';
 </script>
 
-<script is:inline>
+<script is:inline define:vars={{ reservedDates }}>
+  document.addEventListener('DOMContentLoaded', function () {
+    flatpickr('#datepicker', {
+      disable: reservedDates,
+      dateFormat: 'Y-m-d',
+    });
+  });
+
   const formElement = document.querySelector('.submit-form');
   formElement.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -110,3 +130,18 @@ const program = Astro.url.searchParams.get('p');
     left: -5000px;
   }
 </style>
+
+<style is:inline>
+  .flatpickr-disabled::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: 2.5px;
+    left: calc(50% - 3.5px);
+    width: 7px;
+    height: 7px;
+    background-color: var(--clr-primary-400);
+    border-radius: 50%;
+  }
+</style>
+../server/calendar/calendar
