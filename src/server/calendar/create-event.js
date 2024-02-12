@@ -1,24 +1,16 @@
-async function createEvent(calendar) {
-  const event = {
-    summary: 'Test událost',
-    location: 'Location',
-    description: 'Description',
-    start: {
-      dateTime: '2024-02-16T10:00:00',
-      timeZone: 'UTC',
-    },
-    end: {
-      dateTime: '2024-02-16T12:00:00',
-      timeZone: 'UTC',
-    },
-  };
+import { getCalendar } from './calendar';
+
+export async function createEvent(event) {
+  const calendar = getCalendar();
   try {
     const response = await calendar.events.insert({
-      calendarId: import.meta.env.CALENDAR_ID, // Calendar ID where the event will be created
+      calendarId: import.meta.env.CALENDAR_ID,
       resource: event,
     });
     console.log('Event created:', response.data);
+    return true;
   } catch (error) {
     console.error('Error creating event:', error);
+    return false;
   }
 }

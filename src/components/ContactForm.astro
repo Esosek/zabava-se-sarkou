@@ -11,17 +11,6 @@ const reservedDates: any = await getReservedDates();
 ---
 
 <form class="submit-form" method="POST">
-  {
-    !reservedDates.error && (
-      <input
-        id="datepicker"
-        class="flatpickr flatpickr-input"
-        type="text"
-        placeholder="Vybrat datum"
-        readonly="readonly"
-      />
-    )
-  }
   <div>
     <label for="name">Jméno a příjmení</label>
     <input id="name" name="name" type="text" autocomplete="name" required />
@@ -44,9 +33,22 @@ const reservedDates: any = await getReservedDates();
     </select>
   </div>
 
+  {
+    !reservedDates.error && (
+      <input
+        id="datepicker"
+        name="date"
+        class="flatpickr flatpickr-input"
+        type="text"
+        placeholder="Vybrat datum"
+        readonly="readonly"
+      />
+    )
+  }
+
   <div>
     <label for="message">Zpráva</label>
-    <textarea id="message" name="message" required></textarea>
+    <textarea id="message" name="message"></textarea>
   </div>
 
   <div>

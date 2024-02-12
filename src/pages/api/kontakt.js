@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { createEvent as createCalendarEvent } from '../../server/calendar/create-event';
 
 export const prerender = false;
 
@@ -8,7 +9,9 @@ export async function POST({ request }) {
     const formData = getFormData(requestData);
 
     validateFormData(formData);
-    await sendEmail(formData);
+
+    const isEventCreated = await createEvent(formData);
+    await sendEmail(formData, isEventCreated);
 
     return new Response(JSON.stringify('Form proccessed sucessfully'), {
       status: 200,
@@ -28,6 +31,7 @@ function getFormData(data) {
   result.userName = escapeInput(data.get('name'));
   result.userEmail = escapeInput(data.get('email'));
   result.selectedService = escapeInput(data.get('service-select'));
+  result.selectedDate = escapeInput(data.get('date'));
   result.userMessage = escapeInput(data.get('message'));
   result.userSubscribe = data.get('subscribe');
   result.honeypot = data.get('user-number');
@@ -47,6 +51,7 @@ function validateFormData({
   userName,
   userEmail,
   selectedService,
+  selectedDate,
   userMessage,
   userSubscribe,
   honeypot,
@@ -65,8 +70,12 @@ function validateFormData({
     errors.push('selected service is not valid');
   }
 
-  if (userMessage.trim().length < 25 || userMessage.trim().length > 1500) {
-    errors.push('user message is too short or too long');
+  if (!isDateValid(selectedDate)) {
+    errors.push('selected date is not valid');
+  }
+
+  if (userMessage.trim().length > 1500) {
+    errors.push('user message is too long');
   }
 
   if (honeypot.length !== 0) {
@@ -86,11 +95,39 @@ function validateFormData({
     const regex = /[\p{L}-]/gu;
     return regex.test(service.trim());
   }
+
+  function isDateValid(date) {
+    // Validate date format 'YYYY-MM-DD'
+    const dateFormatRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+    if (!dateFormatRegex.test(date)) {
+      return false;
+    }
+
+    return !isNaN(new Date(date).getTime());
+  }
 }
 
-async function sendEmail(userData) {
+async function createEvent({ selectedDate, userName, selectedService }) {
+  const dateStart = new Date(selectedDate);
+  const dateEnd = new Date(dateStart);
+  dateEnd.setDate(dateStart.getDate() + 1);
+
+  return await createCalendarEvent({
+    summary: `${selectedService} - ${userName}`,
+    // location: formData.location,
+    start: {
+      date: dateStart.toISOString().split('T')[0],
+    },
+    end: {
+      date: dateEnd.toISOString().split('T')[0],
+    },
+  });
+}
+
+async function sendEmail(userData, isEventCreated) {
   const mailTransporter = setupMailTransporter();
-  const mailDetails = prepareMailContent(userData);
+  const mailDetails = prepareMailContent(userData, isEventCreated);
 
   try {
     return await mailTransporter.sendMail(mailDetails);
@@ -124,18 +161,25 @@ function setupMailTransporter() {
   return mailTransporter;
 }
 
-function prepareMailContent({
-  userName,
-  userEmail,
-  selectedService,
-  userMessage,
-  userSubscribe,
-}) {
+function prepareMailContent(
+  {
+    userName,
+    userEmail,
+    selectedService,
+    selectedDate,
+    userMessage,
+    userSubscribe,
+  },
+  isEventCreated
+) {
   const emailTo = import.meta.env.EMAIL_TO_ADDRESS;
   const content = `<div>
   <p><strong>Email:</strong> ${userEmail}</p>
   <p><strong>Jméno:</strong> ${userName}</p>
   <p><strong>Vybraný program:</strong> ${selectedService}</p>
+  <p><strong>Datum:</strong> ${selectedDate} - ${
+    isEventCreated ? 'Událost vytvořena' : 'Událost nebyla vytvořena!'
+  }</p>
   <p><strong>Zpráva:</strong> ${userMessage}</p>
   <p><strong>Přihlášení k odběru:</strong> ${
     userSubscribe === 'on' ? 'ano' : 'ne'
