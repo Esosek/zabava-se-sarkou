@@ -178,7 +178,7 @@ function prepareMailContent(
   <p><strong>Jméno:</strong> ${userName}</p>
   <p><strong>Vybraný program:</strong> ${selectedService}</p>
   <p><strong>Datum:</strong> ${selectedDate} - ${
-    isEventCreated ? 'Událost vytvořena' : 'Událost nebyla vytvořena!'
+    !isEventCreated ? 'Událost nebyla v kalendáři vytvořena!' : ''
   }</p>
   <p><strong>Zpráva:</strong> ${userMessage}</p>
   <p><strong>Přihlášení k odběru:</strong> ${
