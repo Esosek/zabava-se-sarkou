@@ -32,6 +32,7 @@ function getFormData(data) {
   result.userEmail = escapeInput(data.get('email'));
   result.selectedService = escapeInput(data.get('service-select'));
   result.selectedDate = escapeInput(data.get('date'));
+  result.location = escapeInput(data.get('location'));
   result.userMessage = escapeInput(data.get('message'));
   result.userSubscribe = data.get('subscribe');
   result.honeypot = data.get('user-number');
@@ -52,11 +53,16 @@ function validateFormData({
   userEmail,
   selectedService,
   selectedDate,
+  location,
   userMessage,
   userSubscribe,
   honeypot,
 }) {
   const errors = [];
+
+  if (selectedService != null && selectedDate == null && location == null) {
+    errors.push('selected service is missing date and location');
+  }
 
   if (userName.trim().length < 3 || userName.trim().length > 50) {
     errors.push('user name is too short or too long');
@@ -70,8 +76,15 @@ function validateFormData({
     errors.push('selected service is not valid');
   }
 
-  if (!isDateValid(selectedDate)) {
+  if (selectedDate != null && !isDateValid(selectedDate)) {
     errors.push('selected date is not valid');
+  }
+
+  if (
+    (location != null && location.trim().length < 5) ||
+    location.trim().length > 200
+  ) {
+    errors.push('location is too short or long');
   }
 
   if (userMessage.trim().length > 1500) {
@@ -108,14 +121,19 @@ function validateFormData({
   }
 }
 
-async function createEvent({ selectedDate, userName, selectedService }) {
+async function createEvent({
+  selectedDate,
+  userName,
+  selectedService,
+  location,
+}) {
   const dateStart = new Date(selectedDate);
   const dateEnd = new Date(dateStart);
   dateEnd.setDate(dateStart.getDate() + 1);
 
   return await createCalendarEvent({
     summary: `${selectedService} - ${userName}`,
-    // location: formData.location,
+    location: location,
     start: {
       date: dateStart.toISOString().split('T')[0],
     },
@@ -167,6 +185,7 @@ function prepareMailContent(
     userEmail,
     selectedService,
     selectedDate,
+    location,
     userMessage,
     userSubscribe,
   },
@@ -177,9 +196,10 @@ function prepareMailContent(
   <p><strong>Email:</strong> ${userEmail}</p>
   <p><strong>Jméno:</strong> ${userName}</p>
   <p><strong>Vybraný program:</strong> ${selectedService}</p>
-  <p><strong>Datum:</strong> ${selectedDate} - ${
-    !isEventCreated ? 'Událost nebyla v kalendáři vytvořena!' : ''
+  <p><strong>Datum:</strong> ${selectedDate}${
+    !isEventCreated ? '- Událost nebyla v kalendáři vytvořena!' : ''
   }</p>
+  <p><strong>Adresa:</strong> ${location}</p>
   <p><strong>Zpráva:</strong> ${userMessage}</p>
   <p><strong>Přihlášení k odběru:</strong> ${
     userSubscribe === 'on' ? 'ano' : 'ne'
