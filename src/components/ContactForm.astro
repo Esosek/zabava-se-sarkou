@@ -35,14 +35,25 @@ const reservedDates: any = await getReservedDates();
 
   {
     !reservedDates.error && (
-      <input
-        id="datepicker"
-        name="date"
-        class="flatpickr flatpickr-input"
-        type="text"
-        placeholder="Vybrat datum"
-        readonly="readonly"
-      />
+      <>
+        <input
+          id="datepicker"
+          name="date"
+          class="flatpickr flatpickr-input"
+          type="text"
+          placeholder="Vybrat datum"
+          readonly="readonly"
+          style="display:none"
+        />
+        <input
+          id="location-input"
+          name="location"
+          type="text"
+          placeholder="Adresa"
+          required
+          style="display:none"
+        />
+      </>
     )
   }
 
@@ -73,8 +84,27 @@ const reservedDates: any = await getReservedDates();
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script define:vars={{ program }}>
+  const datepickerElement = document.getElementById('datepicker');
+  const locationElement = document.getElementById('location-input');
   const selectElement = document.getElementById('service-select');
+
+  selectElement.addEventListener('change', () => {
+    if (selectElement.value === 'zadny') hideInputs();
+    else showInputs();
+  });
+
   selectElement.value = program ?? 'zadny';
+  if (selectElement.value !== 'zadny') showInputs();
+
+  function hideInputs() {
+    datepickerElement.style.display = 'none';
+    locationElement.style.display = 'none';
+  }
+
+  function showInputs() {
+    datepickerElement.style.display = 'block';
+    locationElement.style.display = 'block';
+  }
 </script>
 
 <script is:inline define:vars={{ reservedDates }}>
