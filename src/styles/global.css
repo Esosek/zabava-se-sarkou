@@ -48,13 +48,13 @@ body {
   display: flex;
   flex-direction: column;
   margin-inline: auto;
-  padding-top: 1rem;
+  padding: 1rem 2rem 0;
   max-width: 1200px;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (max-width: 800px) {
   body {
-    padding: 1rem 2rem 0;
+    padding-inline: 0;
   }
 }
 
@@ -110,7 +110,7 @@ button:focus {
 .flow {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .flex-group {
