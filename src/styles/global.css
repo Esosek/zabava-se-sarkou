@@ -137,7 +137,7 @@ button:focus {
 
 .btn--primary:hover,
 .btn--primary:focus {
-  background-color: transparent;
+  background-color: var(--clr-secondary-400);
   color: var(--clr-neutral-700);
 }
 

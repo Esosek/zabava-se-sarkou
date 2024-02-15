@@ -4,14 +4,19 @@ import ContactForm from '../components/ContactForm.astro';
 ---
 
 <MainLayout title="Kontakt">
-  <div class="content-wrap">
+  <div class="flow">
+    <p>
+      Chcete si zarezervovat program nebo máte dotazy ohledně nabízených služeb?
+      Kontaktujte mě prosím pomocí tohoto formuláře.
+    </p>
     <ContactForm />
   </div>
 </MainLayout>
 
 <style>
-  .content-wrap {
-    display: grid;
-    justify-content: center;
+  p {
+    text-align: center;
+    max-width: 650px;
+    margin-inline: auto;
   }
 </style>
