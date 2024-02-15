@@ -1,5 +1,7 @@
 :root {
-  --ff-primary: system-ui, sans-serif;
+  --ff-primary: 'Montserrat', system-ui, sans-serif;
+  --ff-accent: 'Lato', system-ui, sans-serif;
+  --ff-slogan: 'Fira Sans', system-ui, sans-serif;
 
   --fs-large: 2.4rem;
   --fs-medium: 1.2rem;
@@ -87,6 +89,7 @@ svg {
 }
 
 button {
+  font-family: var(--ff-accent);
   background: none;
   border: none;
 }
