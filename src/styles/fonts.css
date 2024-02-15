@@ -51,7 +51,7 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: url('fonts/lato-v24-latin-ext-regular/lato-v24-latin-ext-regular.woff2')
+  src: url('fonts/lato-v24-latin-ext/lato-v24-latin-ext-regular.woff2')
     format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* lato-700 - latin-ext */
@@ -60,5 +60,6 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  src: url('fonts/lato-v24-latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('fonts/lato-v24-latin-ext/lato-v24-latin-ext-700.woff2')
+    format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
