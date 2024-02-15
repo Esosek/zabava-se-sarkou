@@ -39,12 +39,15 @@ body {
   height: 100%;
 }
 
+html {
+  background-image: url('images/background.png');
+}
+
 body {
   font-family: var(--ff-primary);
   font-weight: var(--fw-light);
   font-size: var(--fs-regular);
   color: var(--clr-neutral-700);
-  background-color: var(--clr-neutral-200);
   display: flex;
   flex-direction: column;
   margin-inline: auto;
