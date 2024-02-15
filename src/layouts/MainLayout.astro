@@ -1,14 +1,14 @@
 ---
-import CMP from '../services/CookieYes.astro';
-import GoogleAnalytics from '../services/GoogleAnalytics.astro';
-import NetlifyIdentityWidget from '../services/NetlifyIdentity.astro';
+import CMP from "../services/CookieYes.astro";
+import GoogleAnalytics from "../services/GoogleAnalytics.astro";
+import NetlifyIdentityWidget from "../services/NetlifyIdentity.astro";
 
-import '../styles/fonts.css';
-import '../styles/global.css';
-import '../styles/images.css';
-import Header from '../components/Header.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/fonts.css";
+import "../styles/global.css";
+import "../styles/images.css";
+import Header from "../components/Header.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 const { title } = Astro.props;
 ---
@@ -24,6 +24,10 @@ const { title } = Astro.props;
     <!-- <NetlifyIdentityWidget /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <Header />

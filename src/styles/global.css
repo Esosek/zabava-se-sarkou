@@ -1,14 +1,14 @@
 :root {
-  --ff-primary: 'Montserrat', system-ui, sans-serif;
-  --ff-accent: 'Lato', system-ui, sans-serif;
-  --ff-slogan: 'Fira Sans', system-ui, sans-serif;
+  --ff-primary: "Montserrat", system-ui, sans-serif;
+  --ff-accent: var(--ff-primary);
+  --ff-slogan: "Fira Sans", system-ui, sans-serif;
 
   --fs-large: 2.4rem;
   --fs-medium: 1.2rem;
   --fs-regular: 1rem;
-  --fs-small: 0.7rem;
+  --fs-small: 0.8rem;
 
-  --fw-light: 200;
+  --fw-light: 300;
   --fw-regular: 400;
   --fw-bold: 700;
 
@@ -42,7 +42,7 @@ body {
 }
 
 html {
-  background-image: url('images/background.png');
+  background-image: url("images/background.png");
 }
 
 body {
@@ -54,7 +54,7 @@ body {
   flex-direction: column;
   margin-inline: auto;
   padding: 1rem 2rem 0;
-  max-width: 1200px;
+  max-width: 1300px;
 }
 
 @media only screen and (max-width: 800px) {

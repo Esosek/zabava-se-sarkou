@@ -1,12 +1,12 @@
 ---
-import Media from './Media.astro';
+import Media from "./Media.astro";
 ---
 
 <header>
   <p class="slogan">Zábava se Šárkou</p>
   <img
     class="logo-img"
-    src="/images/logo.png"
+    src="/images/logo_text.png"
     alt="Šárčin ikonický červený klobouk se zeleným lístkem a nápisem zábava na míru pro děti"
   />
   <button class="menu-btn">
@@ -26,19 +26,27 @@ import Media from './Media.astro';
 </header>
 
 <script>
-  const mainNavbar = document.getElementById('main-navbar');
-  const menuBtn = document.querySelector('.menu-btn');
-  const backdrop = document.querySelector('.backdrop') as HTMLElement;
-  menuBtn.addEventListener('click', () => {
-    backdrop.style.display = 'block';
-    mainNavbar.classList.toggle('open');
+  const mainNavbar = document.getElementById("main-navbar");
+  const menuBtn = document.querySelector(".menu-btn");
+  const backdrop = document.querySelector(".backdrop") as HTMLElement;
+  menuBtn.addEventListener("click", () => {
+    backdrop.style.display = "block";
+    mainNavbar.classList.toggle("open");
     setTimeout(() => {
-      backdrop.classList.toggle('open');
+      backdrop.classList.toggle("open");
     }, 10);
   });
 </script>
 
 <style>
+  header {
+    display: grid;
+    grid-template-columns: 365px 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
   .slogan {
     font-family: var(--ff-slogan);
     color: var(--clr-primary-400);
@@ -48,11 +56,9 @@ import Media from './Media.astro';
     line-height: 1.2;
     letter-spacing: 1px;
   }
-  header {
-    display: grid;
-    grid-template-columns: 365px 1fr 1fr;
-    justify-items: center;
-    align-items: center;
+
+  .logo-img {
+    max-height: 200px;
   }
 
   .menu-btn {
