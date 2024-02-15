@@ -1,5 +1,6 @@
 ---
 title: "Divadlo"
+tags: ["hudba", "pro školy", "vyrábění"]
 ---
 
 # Divadlo

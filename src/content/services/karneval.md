@@ -1,5 +1,6 @@
 ---
 title: "Karneval"
+tags: ["hudba"]
 ---
 
 # Test service
