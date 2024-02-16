@@ -26,6 +26,41 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: 'Nadpis', name: 'title', widget: 'string' }
-      - { label: 'Obsah', name: 'body', widget: 'markdown' }
-      # - { label: 'Datum', name: 'date', widget: 'datetime' }
-      # - { label: 'Obrázek', name: 'image', widget: 'image' }
+      - { label: 'Hlavní obsah', name: 'body', widget: 'markdown' }
+      - {
+          label: 'Tagy',
+          name: 'tags',
+          widget: 'select',
+          multiple: true,
+          max: 3,
+          options:
+            [
+              'hudba',
+              'pro školy',
+              'pro veřejnost',
+              'vyrábění',
+              'tanec',
+              'divadlo',
+              'individuální',
+              'skupina',
+            ],
+        }
+      - {
+          label: 'Hlavní obrázek',
+          name: 'heroImage',
+          widget: 'image',
+          required: false,
+        }
+      - {
+          label: 'Doplňující informace',
+          name: 'bottomContent',
+          widget: 'markdown',
+          required: false,
+        }
+      - {
+          label: 'Galerie',
+          name: 'image',
+          widget: 'list',
+          field: { label: Obrázek, name: image, widget: image },
+          required: false,
+        }
