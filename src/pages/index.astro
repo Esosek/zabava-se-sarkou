@@ -1,6 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+
 import OrderButton from '../components/OrderButton.astro';
 import MainLayout from '../layouts/MainLayout.astro';
+
+import topImg from '../assets/images/uvod_01.webp';
+import bottomImg from '../assets/images/uvod_02.webp';
 ---
 
 <MainLayout title="Úvod">
@@ -14,15 +19,15 @@ import MainLayout from '../layouts/MainLayout.astro';
       <OrderButton>Objednat zábavu</OrderButton>
     </div>
 
-    <img
+    <Image
       class="content-img sh-top-large sh-left-large"
-      src="/images/uvod_01.webp"
+      src={topImg}
       alt="Šárka usmívající se a oblečená v červeno černém oblečení s červeným kloboukem"
     />
 
-    <img
+    <Image
       class="content-img--square sh-right-small sh-bottom-small"
-      src="/images/uvod_02.webp"
+      src={bottomImg}
       alt="Šárka maluje motýlka na obličej malé dívce"
     />
 

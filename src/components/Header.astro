@@ -1,12 +1,15 @@
 ---
-import Media from "./Media.astro";
+import Media from './Media.astro';
+import { Image } from 'astro:assets';
+
+import logoImg from '../assets/images/logo_text.png';
 ---
 
 <header>
   <p class="slogan">Zábava se Šárkou</p>
-  <img
+  <Image
     class="logo-img"
-    src="/images/logo_text.png"
+    src={logoImg}
     alt="Šárčin ikonický červený klobouk se zeleným lístkem a nápisem zábava na míru pro děti"
   />
   <button class="menu-btn">
@@ -26,14 +29,14 @@ import Media from "./Media.astro";
 </header>
 
 <script>
-  const mainNavbar = document.getElementById("main-navbar");
-  const menuBtn = document.querySelector(".menu-btn");
-  const backdrop = document.querySelector(".backdrop") as HTMLElement;
-  menuBtn.addEventListener("click", () => {
-    backdrop.style.display = "block";
-    mainNavbar.classList.toggle("open");
+  const mainNavbar = document.getElementById('main-navbar');
+  const menuBtn = document.querySelector('.menu-btn');
+  const backdrop = document.querySelector('.backdrop') as HTMLElement;
+  menuBtn.addEventListener('click', () => {
+    backdrop.style.display = 'block';
+    mainNavbar.classList.toggle('open');
     setTimeout(() => {
-      backdrop.classList.toggle("open");
+      backdrop.classList.toggle('open');
     }, 10);
   });
 </script>

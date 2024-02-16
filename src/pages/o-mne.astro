@@ -1,5 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+
 import MainLayout from '../layouts/MainLayout.astro';
+
+import image from '../assets/images/o-mne.webp';
 ---
 
 <MainLayout title="O mně">
@@ -27,8 +31,8 @@ import MainLayout from '../layouts/MainLayout.astro';
         spolupráci s vámi a na čas strávený s vašimi dětmi.
       </p>
 
-      <img
-        src="/images/o-mne.webp"
+      <Image
+        src={image}
         alt="Šárka v jejím tradičním červeném klobouku a červeném saku připravující se na vystoupení"
         class="content-img sh-bottom-large sh-right-large"
       />
