@@ -3,11 +3,11 @@ title: Pasování školáků
 age: 3-5 roky
 childrenCount: 30+ dětí
 tag: hudba
-heroImage: /images/uploads/pasovani-skolaku.webp
+heroImage: ../assets/images/uploads/pasovani-skolaku.webp
 image:
-  - /images/uploads/pasovani-skolaku_gallery_01.webp
-  - /images/uploads/pasovani_skolaku_gallery_02.webp
-  - /images/uploads/pasovani_skolaku_gallery_03.webp
+  - ../assets/images/uploads/pasovani-skolaku_gallery_01.webp
+  - ../assets/images/uploads/pasovani_skolaku_gallery_02.webp
+  - ../assets/images/uploads/pasovani_skolaku_gallery_03.webp
 ---
 ## Program
 

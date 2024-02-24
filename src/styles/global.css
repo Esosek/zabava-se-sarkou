@@ -4,9 +4,9 @@
   --ff-slogan: 'Fira Sans', system-ui, sans-serif;
 
   --fs-large: 2.4rem;
-  --fs-medium: 1.2rem;
+  --fs-medium: 1.1875rem;
   --fs-regular: 1rem;
-  --fs-small: 0.8rem;
+  --fs-small: 0.8125rem;
 
   --fw-light: 300;
   --fw-regular: 400;
@@ -14,7 +14,7 @@
 
   --clr-primary-400: hsl(3, 78%, 69%);
   --clr-primary-700: hsl(3, 78%, 29%);
-  --clr-secondary-400: hsl(7, 73%, 87%);
+  --clr-secondary-400: rgb(246, 203, 198);
   --clr-tertiary-400: hsl(83, 22%, 76%);
 
   --clr-purple-400: hsl(252, 36%, 77%);
