@@ -65,6 +65,15 @@ body {
 
 h1 {
   font-size: var(--fs-large);
+  font-weight: var(--fw-regular);
+}
+
+h2 {
+  font-size: var(--fs-medium);
+}
+
+h3 {
+  font-size: var(--fs-regular);
 }
 
 p {
