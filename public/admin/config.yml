@@ -27,11 +27,18 @@ collections:
     fields:
       - { label: 'Nadpis', name: 'title', widget: 'string' }
       - { label: 'Hlavní obsah', name: 'body', widget: 'markdown' }
+      - { label: 'Cena od', name: 'price', widget: 'string' }
       - {
           label: 'Věk',
           name: 'age',
           widget: 'select',
-          options: ['0-2 roky', '3-5 roky', '6+ let'],
+          options: ['0-2 roky', '3-5 let', '6+ let', 'každý věk'],
+        }
+      - {
+          label: Doporučené,
+          name: 'isFeatured',
+          widget: boolean,
+          default: false,
         }
       - {
           label: 'Počet dětí',

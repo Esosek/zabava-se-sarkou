@@ -1,10 +1,24 @@
 ---
-title: "Karneval"
-tags: ["hudba"]
+title: Karneval
+isFeatured: true
+price: 2000 Kč/hod
+age: každý věk
+childrenCount: 30+ dětí
+tag: hudba
+heroImage: ../assets/images/uploads/karneval_01.webp
+bottomContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices venenatis ante, vitae tempus velit tincidunt ut. Quisque sed imperdiet ex, a varius diam. Suspendisse id velit placerat, euismod metus sed, viverra mauris.
+image:
+  - ../assets/images/uploads/karneval_gallery_01.webp
+  - ../assets/images/uploads/karneval_gallery_02.webp
 ---
+Plánujete karneval ve Vaší obci, školce či kdekoliv jinde? Ráda přijedu a budu děti provázet touto oslavou. 
 
-# Test service
+K zábavě využívám vlastní mikrofon a hudební reproduktor., pokud si nepřejete jinak.
+Neomezený počet dětí i dospělých.
 
-Space exploration has reached new heights in 2024, with several missions highlighting the year's advancements. From the launch of the next-generation lunar landers to the deployment of deep-space telescopes, the cosmos has never been more within our reach.
+## Univerzální program
 
-## Heading 2
+* Pouštím připravené písně (ráda však zařadím Vámi vybrané písničky pro děti)
+* Opičí dráha (vlastní materiál, padák, aj.)
+* Pouštím připravené písně (ráda však zařadím Vámi vybrané písničky pro děti)
+* Minimální délka programu 2 hodiny

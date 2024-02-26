@@ -1,5 +1,6 @@
 ---
 title: Pasování školáků
+price: 4000 Kč
 age: 3-5 roky
 childrenCount: 30+ dětí
 tag: hudba
@@ -17,5 +18,3 @@ image:
 * Rozloučení s kamarády s bublifukem
 * Zpěv autorských písní Myšák Očko, Veverka Věrka aj.
 * Malování na obličej/ruku v ceně do 30 dětí (při vyšším počtu příplatek 500 Kč)
-
-**Cena od 4000 Kč viz [ceník](/cenik)**
