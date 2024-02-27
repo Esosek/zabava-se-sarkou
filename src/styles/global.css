@@ -138,6 +138,10 @@ li {
   flex-wrap: wrap;
 }
 
+.grid {
+  display: grid;
+}
+
 .btn--primary {
   background-color: var(--clr-primary-400);
   color: var(--clr-neutral-700);
