@@ -66,6 +66,7 @@ h1 {
 
 h2 {
   font-size: var(--fs-medium);
+  margin-block: 2rem 1rem;
 }
 
 h3 {
@@ -75,6 +76,7 @@ h3 {
 p {
   margin-block: 0.5rem;
   line-height: 1.5;
+  max-width: 80ch;
 }
 
 a {
@@ -104,6 +106,10 @@ button {
 button:hover,
 button:focus {
   cursor: pointer;
+}
+
+li {
+  margin-bottom: 0.5rem;
 }
 
 .visually-hidden {
