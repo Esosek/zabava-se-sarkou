@@ -1,8 +1,12 @@
 ---
-// Add service url as a query param
+const { selectedService, style } = Astro.props;
 ---
 
-<a href="/kontakt" class="btn--primary">
+<a
+  href={selectedService ? `/kontakt?p=${selectedService}` : '/kontakt'}
+  class="btn--primary"
+  style={style}
+>
   <slot />
 </a>
 

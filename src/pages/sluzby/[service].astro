@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
 import MainLayout from '../../layouts/MainLayout.astro';
+import OrderButton from '../../components/OrderButton.astro';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -13,26 +14,62 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const { title, heroImageAlt } = service.data;
-const heroImage = import(`../${service.data.heroImage}`);
+const { title, heroImageAlt, price, bottomContent } = service.data;
+const heroImage =
+  service.data.heroImage &&
+  import(/* @vite-ignore */ `../${service.data.heroImage}`);
 const { Content } = await service.render();
 ---
 
 <MainLayout title={title}>
-  <div class="flow grid">
-    <div class="content">
-      <h1>{title}</h1>
-      <Content />
+  <div class="flow">
+    <div class=`flow ${heroImage ? 'grid' : ''}`>
+      <div class="flow">
+        <h1>{title}</h1>
+        <div class="content-wrap">
+          <Content />
+        </div>
+        <div class="cta-group">
+          {
+            price && (
+              <p class="price">
+                Cena od <strong>{price}</strong>
+              </p>
+            )
+          }
+          <OrderButton
+            selectedService={service.slug}
+            style={{ margin: '0.5rem auto' }}
+          >
+            rezervovat
+          </OrderButton>
+        </div>
+      </div>
+      {
+        heroImage && (
+          <Image
+            src={heroImage}
+            alt={heroImageAlt}
+            class="content-img sh-top-small sh-right-small"
+          />
+        )
+      }
     </div>
-    <Image
-      src={heroImage}
-      alt={heroImageAlt}
-      class="content-img sh-top-small sh-right-small"
-    />
+    {bottomContent && <p>{bottomContent}</p>}
   </div>
 </MainLayout>
 
 <style>
   .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .price {
+    text-align: center;
+  }
+
+  .content-img {
+    justify-self: center;
   }
 </style>

@@ -67,7 +67,7 @@ collections:
           required: false,
         }
       - {
-          label: 'Doplňující informace',
+          label: 'Spodní obsah',
           name: 'bottomContent',
           widget: 'markdown',
           required: false,
