@@ -6,7 +6,7 @@
   border-radius: 20px;
   object-fit: cover;
   max-width: 20rem;
-  box-shadow: var(--_vertical-shadow) var(--_horizontal-shadow) 0 0
+  box-shadow: var(--_horizontal-shadow) var(--_vertical-shadow) 0 0
     var(--clr-secondary-400);
 }
 
@@ -24,11 +24,11 @@
 }
 
 .sh-right-small {
-  --horizontal-shadow: -10px;
+  --horizontal-shadow: 10px;
 }
 
 .sh-right-large {
-  --horizontal-shadow: -20px;
+  --horizontal-shadow: 20px;
 }
 
 .sh-bottom-small {
