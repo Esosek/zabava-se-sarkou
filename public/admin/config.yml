@@ -61,6 +61,12 @@ collections:
           required: false,
         }
       - {
+          label: 'Popis hlavního obrázku',
+          name: 'heroImageAlt',
+          widget: 'string',
+          required: false,
+        }
+      - {
           label: 'Doplňující informace',
           name: 'bottomContent',
           widget: 'markdown',

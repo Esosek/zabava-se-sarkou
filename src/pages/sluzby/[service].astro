@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const { title } = service.data;
+const { title, heroImageAlt } = service.data;
 const heroImage = import(`../${service.data.heroImage}`);
 const { Content } = await service.render();
 ---
@@ -26,7 +26,7 @@ const { Content } = await service.render();
     </div>
     <Image
       src={heroImage}
-      alt=""
+      alt={heroImageAlt}
       class="content-img sh-top-small sh-right-small"
     />
   </div>
