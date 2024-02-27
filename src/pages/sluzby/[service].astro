@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+
 import MainLayout from '../../layouts/MainLayout.astro';
 
 export async function getStaticPaths() {
@@ -12,10 +14,25 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 const { title } = service.data;
+const heroImage = import(`../${service.data.heroImage}`);
 const { Content } = await service.render();
 ---
 
 <MainLayout title={title}>
-  <h1>{title}</h1>
-  <Content />
+  <div class="flow grid">
+    <div class="content">
+      <h1>{title}</h1>
+      <Content />
+    </div>
+    <Image
+      src={heroImage}
+      alt=""
+      class="content-img sh-top-small sh-right-small"
+    />
+  </div>
 </MainLayout>
+
+<style>
+  .grid {
+  }
+</style>
