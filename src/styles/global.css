@@ -41,10 +41,6 @@ body {
   height: 100%;
 }
 
-html {
-  background-image: url('../assets/images//background.png');
-}
-
 body {
   font-family: var(--ff-primary);
   font-weight: var(--fw-light);
