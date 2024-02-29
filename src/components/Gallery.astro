@@ -7,20 +7,54 @@ const importedImages = images.map(
 );
 ---
 
-<div id="gallery" style="display: block;">
+<div id="gallery" style="display: none;">
   <div class="gallery__backdrop"></div>
   <div class="gallery__modal">
-    <button class="close-btn"
-      ><svg
-        class="icon-btn"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 384 512"
-        ><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-        <path
-          d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
-        ></path></svg
-      ></button
-    >
+    <div class="gallery__header flex-group">
+      <p class="gallery__img-counter">1/4</p>
+      <button class="close-btn"
+        ><svg
+          class="icon-btn"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+          ><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+          ></path></svg
+        ></button
+      >
+    </div>
+    <div class="gallery__content flex-group">
+      <button class="control-btn control-btn--previous icon-btn"
+        ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+          ><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"
+          ></path></svg
+        ></button
+      >
+      {
+        importedImages.map((img) => {
+          return (
+            <Image
+              class="gallery__img"
+              src={img}
+              alt=""
+              style={{ display: 'none' }}
+            />
+          );
+        })
+      }
+
+      <button class="control-btn control-btn--next icon-btn"
+        ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+          ><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"
+          ></path></svg
+        ></button
+      >
+    </div>
   </div>
 </div>
 
@@ -29,7 +63,7 @@ const importedImages = images.map(
     importedImages.map((image) => {
       return (
         <div class="img-wrapper">
-          <Image src={image} alt="" class="gallery-img" />
+          <Image src={image} alt="" class="gallery__content-img" />
         </div>
       );
     })
@@ -53,17 +87,40 @@ const importedImages = images.map(
 
   .gallery__backdrop {
     background-color: var(--clr-transparent-75);
-    /* backdrop-filter: blur(10px); */
+    backdrop-filter: blur(10px);
   }
 
-  #gallery .close-btn {
-    position: absolute;
-    top: 50px;
-    right: 50px;
+  .gallery__modal {
+    padding: 1rem 2rem;
+  }
+
+  .flex-group {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .gallery__img-counter {
+    color: var(--clr-neutral-200);
+    font-size: var(--fs-large);
+    font-weight: var(--fw-bold);
+  }
+
+  .gallery__content {
+    height: 90%;
+  }
+
+  .gallery__img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: scale-down;
   }
 
   .icon-btn {
     fill: var(--clr-neutral-200);
+  }
+
+  .control-btn.icon-btn {
+    width: 2rem;
   }
 
   .grid {
@@ -77,13 +134,13 @@ const importedImages = images.map(
     max-width: 300px;
   }
 
-  .gallery-img {
+  .gallery__content-img {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     transition: transform 250ms ease-out;
   }
 
-  .gallery-img:hover {
+  .gallery__content-img:hover {
     cursor: pointer;
     transform: scale(1.1);
   }
@@ -92,21 +149,55 @@ const importedImages = images.map(
     .grid {
       justify-items: center;
     }
+
+    .icon-btn {
+      width: 1.5rem;
+    }
+
+    .control-btn.icon-btn {
+      width: 1rem;
+    }
+
+    .gallery__img-counter {
+      font-size: var(--fs-medium);
+    }
   }
 </style>
 
-<script>
-  const galleryImages = document.getElementsByClassName('gallery-img');
+<script define:vars={{ importedImages }}>
+  const previewImages = document.getElementsByClassName('gallery__content-img');
   const galleryModal = document.getElementById('gallery');
   const galleryCloseBtn = document.querySelector('#gallery .close-btn');
+  const imageCounter = document.querySelector('.gallery__img-counter');
+  const galleryImages = document.getElementsByClassName('gallery__img');
+  const previousImgBtn = document.querySelector('.control-btn--previous');
+  const nextImgBtn = document.querySelector('.control-btn--next');
+
+  let activeImageIndex;
 
   function openGalleryModal(imageIndex) {
-    console.log(`User clicked image with index ${imageIndex}`);
     galleryModal.style.display = 'block';
+    setImage(imageIndex);
+
+    if (importedImages.length <= 1) {
+      previousImgBtn.style.display = 'none';
+      nextImgBtn.style.display = 'none';
+      document.querySelector('.gallery__content').style.justifyContent =
+        'center';
+    }
+  }
+
+  function setImage(index) {
+    imageCounter.innerHTML = `${index + 1}/${importedImages.length}`;
+    if (activeImageIndex !== undefined) {
+      galleryImages[activeImageIndex].style.display = 'none';
+    }
+    galleryImages[index].style.display = 'block';
+    activeImageIndex = index;
   }
 
   for (let i = 0; i < galleryImages.length; i++) {
-    galleryImages[i].addEventListener('click', () => openGalleryModal(i));
+    previewImages[i].addEventListener('click', () => openGalleryModal(i));
   }
 
   galleryCloseBtn.addEventListener(
@@ -117,6 +208,22 @@ const importedImages = images.map(
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' || e.key === 'Esc') {
       galleryModal.style.display = 'none';
+    }
+  });
+
+  previousImgBtn.addEventListener('click', () => {
+    if (activeImageIndex === 0) {
+      setImage(importedImages.length - 1);
+    } else {
+      setImage(activeImageIndex - 1);
+    }
+  });
+
+  nextImgBtn.addEventListener('click', () => {
+    if (activeImageIndex === importedImages.length - 1) {
+      setImage(0);
+    } else {
+      setImage(activeImageIndex + 1);
     }
   });
 </script>

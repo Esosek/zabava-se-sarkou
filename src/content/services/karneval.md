@@ -11,7 +11,7 @@ bottomContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibul
 images:
   - ../assets/images/uploads/karneval_gallery_01.webp
   - ../assets/images/uploads/karneval_gallery_02.webp
-  - ../assets/images/uploads/karneval_gallery_01.webp
+  - ../assets/images/uploads/karneval_gallery_03.webp
   - ../assets/images/uploads/karneval_gallery_02.webp
 ---
 Plánujete karneval ve Vaší obci, školce či kdekoliv jinde? Ráda přijedu a budu děti provázet touto oslavou. 
