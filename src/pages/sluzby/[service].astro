@@ -73,4 +73,10 @@ const { Content } = await service.render();
   .content-img {
     justify-self: center;
   }
+
+  @media only screen and (max-width: 800px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
