@@ -112,10 +112,7 @@ button:focus {
 
 ul {
   list-style-type: square;
-}
-
-li {
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 li::marker {
