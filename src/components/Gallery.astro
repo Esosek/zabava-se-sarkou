@@ -5,7 +5,6 @@ const { images } = Astro.props;
 const importedImages = images.map(
   async (image) => await import(/* @vite-ignore */ image)
 );
-console.log(importedImages.length);
 ---
 
 <div class="grid">
