@@ -72,7 +72,7 @@ const currentPage = Astro.url.pathname;
   // Closes Navbar
   const mainNavbar = document.getElementById('main-navbar');
   const backdrop = document.querySelector('.backdrop') as HTMLElement;
-  const closeBtn = mainNavbar.querySelector('.close-btn');
+  const closeBtn = mainNavbar.querySelector('#main-navbar .close-btn');
   closeBtn.addEventListener('click', () => {
     mainNavbar.classList.toggle('open');
     backdrop.classList.toggle('open');
@@ -162,10 +162,6 @@ const currentPage = Astro.url.pathname;
       display: block;
       align-self: flex-end;
       margin: 10px;
-    }
-
-    .icon-btn {
-      fill: var(--clr-neutral-700);
     }
   }
 </style>

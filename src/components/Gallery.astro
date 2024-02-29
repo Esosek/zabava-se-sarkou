@@ -7,12 +7,29 @@ const importedImages = images.map(
 );
 ---
 
+<div id="gallery" style="display: block;">
+  <div class="gallery__backdrop"></div>
+  <div class="gallery__modal">
+    <button class="close-btn"
+      ><svg
+        class="icon-btn"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 384 512"
+        ><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+        ></path></svg
+      ></button
+    >
+  </div>
+</div>
+
 <div class="grid">
   {
     importedImages.map((image) => {
       return (
         <div class="img-wrapper">
-          <Image src={image} alt="" />
+          <Image src={image} alt="" class="gallery-img" />
         </div>
       );
     })
@@ -20,6 +37,35 @@ const importedImages = images.map(
 </div>
 
 <style>
+  #gallery {
+    position: absolute;
+  }
+
+  .gallery__backdrop,
+  .gallery__modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+  }
+
+  .gallery__backdrop {
+    background-color: var(--clr-transparent-75);
+    /* backdrop-filter: blur(10px); */
+  }
+
+  #gallery .close-btn {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+  }
+
+  .icon-btn {
+    fill: var(--clr-neutral-200);
+  }
+
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
@@ -31,13 +77,13 @@ const importedImages = images.map(
     max-width: 300px;
   }
 
-  img {
+  .gallery-img {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     transition: transform 250ms ease-out;
   }
 
-  img:hover {
+  .gallery-img:hover {
     cursor: pointer;
     transform: scale(1.1);
   }
@@ -48,3 +94,29 @@ const importedImages = images.map(
     }
   }
 </style>
+
+<script>
+  const galleryImages = document.getElementsByClassName('gallery-img');
+  const galleryModal = document.getElementById('gallery');
+  const galleryCloseBtn = document.querySelector('#gallery .close-btn');
+
+  function openGalleryModal(imageIndex) {
+    console.log(`User clicked image with index ${imageIndex}`);
+    galleryModal.style.display = 'block';
+  }
+
+  for (let i = 0; i < galleryImages.length; i++) {
+    galleryImages[i].addEventListener('click', () => openGalleryModal(i));
+  }
+
+  galleryCloseBtn.addEventListener(
+    'click',
+    () => (galleryModal.style.display = 'none')
+  );
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      galleryModal.style.display = 'none';
+    }
+  });
+</script>
