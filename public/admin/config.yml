@@ -74,7 +74,7 @@ collections:
         }
       - {
           label: 'Galerie',
-          name: 'image',
+          name: 'images',
           widget: 'list',
           summary: 'Obrázky',
           field: { label: Obrázek, name: image, widget: image },

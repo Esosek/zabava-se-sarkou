@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+
+const { images } = Astro.props;
+const importedImages = images.map(
+  async (image) => await import(/* @vite-ignore */ image)
+);
+console.log(importedImages.length);
+---
+
+<div class="grid">
+  {
+    importedImages.map((image) => {
+      return (
+        <div class="img-wrapper">
+          <Image src={image} alt="" />
+        </div>
+      );
+    })
+  }
+</div>
+
+<style>
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .img-wrapper {
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    max-width: 300px;
+  }
+</style>

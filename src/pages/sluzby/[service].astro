@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 
 import MainLayout from '../../layouts/MainLayout.astro';
 import OrderButton from '../../components/OrderButton.astro';
+import Gallery from '../../components/Gallery.astro';
 
 export async function getStaticPaths() {
   const services = await getCollection('services');
@@ -14,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const { title, heroImageAlt, price, bottomContent } = service.data;
+const { title, heroImageAlt, price, bottomContent, images } = service.data;
 const heroImage =
   service.data.heroImage &&
   import(/* @vite-ignore */ `../${service.data.heroImage}`);
@@ -56,12 +57,12 @@ const { Content } = await service.render();
       }
     </div>
     {bottomContent && <p>{bottomContent}</p>}
+    {images && <Gallery images={images} />}
   </div>
 </MainLayout>
 
 <style>
   .grid {
-    display: grid;
     grid-template-columns: 1fr 1fr;
   }
 

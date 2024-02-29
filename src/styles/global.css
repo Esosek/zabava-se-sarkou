@@ -108,8 +108,17 @@ button:focus {
   cursor: pointer;
 }
 
+ul {
+  list-style-type: square;
+}
+
 li {
   margin-bottom: 1rem;
+}
+
+li::marker {
+  color: var(--clr-primary-400);
+  font-size: 1.3rem;
 }
 
 .visually-hidden {

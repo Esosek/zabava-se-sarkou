@@ -8,7 +8,9 @@ tag: hudba
 heroImage: ../assets/images/uploads/karneval_01.webp
 heroImageAlt: Plakát popisující karneval pro školy a obce s kontaktními informacemi na Šárku
 bottomContent: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices venenatis ante, vitae tempus velit tincidunt ut. Quisque sed imperdiet ex, a varius diam. Suspendisse id velit placerat, euismod metus sed, viverra mauris.
-image:
+images:
+  - ../assets/images/uploads/karneval_gallery_01.webp
+  - ../assets/images/uploads/karneval_gallery_02.webp
   - ../assets/images/uploads/karneval_gallery_01.webp
   - ../assets/images/uploads/karneval_gallery_02.webp
 ---
