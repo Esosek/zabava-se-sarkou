@@ -32,7 +32,7 @@ collections:
           label: 'Věk',
           name: 'age',
           widget: 'select',
-          options: ['0-2 roky', '3-5 let', '6+ let', 'každý věk'],
+          options: ['0-2 roky', '1-5 let', '3-5 let', '6+ let', 'každý věk'],
         }
       - {
           label: Doporučené,
@@ -51,7 +51,7 @@ collections:
           label: 'Tag',
           name: 'tag',
           widget: 'select',
-          options: ['hudba', 'vyrábění', 'tanec', 'divadlo'],
+          options: ['hudba', 'vyrábění', 'tanec', 'divadlo', 'myšák očko'],
           required: false,
         }
       - {
