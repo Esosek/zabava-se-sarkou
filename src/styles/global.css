@@ -68,7 +68,7 @@ h1 {
 
 h2 {
   font-size: var(--fs-medium);
-  margin-block: 2rem 1rem;
+  margin-bottom: 0.5rem;
 }
 
 h3 {

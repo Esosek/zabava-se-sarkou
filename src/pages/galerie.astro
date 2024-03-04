@@ -1,7 +1,17 @@
 ---
+import Gallery from '../components/Gallery.astro';
 import MainLayout from '../layouts/MainLayout.astro';
+
+const imagesContext = import.meta.glob('../assets/images/uploads/*');
+
+const images = Object.keys(imagesContext).map((imgPath) =>
+  imagesContext[imgPath]()
+);
 ---
 
 <MainLayout title="Galerie">
-  <h1>Galerie</h1>
+  <div class="flow">
+    <h1>Galerie</h1>
+    <Gallery images={images} />
+  </div>
 </MainLayout>
