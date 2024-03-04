@@ -5,8 +5,10 @@ age: 3-5 let
 isFeatured: false
 childrenCount: 30+ dětí
 tag: hudba
+heroImage: ../../assets/images/uploads/pasovani-skolaku.webp
 images:
-  - ../assets/images/uploads/pasovani-skolaku_gallery_01.webp
+  - ../../assets/images/uploads/pasovani-skolaku_gallery_01.webp
+  - ../../assets/images/uploads/pasovani_skolaku_gallery_02.webp
 ---
 ## Program
 

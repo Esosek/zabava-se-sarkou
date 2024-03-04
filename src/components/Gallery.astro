@@ -2,9 +2,6 @@
 import { Image } from 'astro:assets';
 
 const { images } = Astro.props;
-const importedImages = images.map(
-  async (image) => await import(/* @vite-ignore */ image)
-);
 ---
 
 <div id="gallery" style="display: none;">
@@ -34,7 +31,7 @@ const importedImages = images.map(
         ></button
       >
       {
-        importedImages.map((img) => {
+        images.map((img) => {
           return (
             <Image
               class="gallery__img"
@@ -60,7 +57,7 @@ const importedImages = images.map(
 
 <div class="grid">
   {
-    importedImages.map((image) => {
+    images.map((image) => {
       return (
         <div class="img-wrapper">
           <Image src={image} alt="" class="gallery__content-img" />
@@ -164,7 +161,7 @@ const importedImages = images.map(
   }
 </style>
 
-<script define:vars={{ importedImages }}>
+<script define:vars={{ images }}>
   const previewImages = document.getElementsByClassName('gallery__content-img');
   const galleryModal = document.getElementById('gallery');
   const galleryCloseBtn = document.querySelector('#gallery .close-btn');
@@ -179,7 +176,7 @@ const importedImages = images.map(
     galleryModal.style.display = 'block';
     setImage(imageIndex);
 
-    if (importedImages.length <= 1) {
+    if (images.length <= 1) {
       previousImgBtn.style.display = 'none';
       nextImgBtn.style.display = 'none';
       document.querySelector('.gallery__content').style.justifyContent =
@@ -188,7 +185,7 @@ const importedImages = images.map(
   }
 
   function setImage(index) {
-    imageCounter.innerHTML = `${index + 1}/${importedImages.length}`;
+    imageCounter.innerHTML = `${index + 1}/${images.length}`;
     if (activeImageIndex !== undefined) {
       galleryImages[activeImageIndex].style.display = 'none';
     }
@@ -213,14 +210,14 @@ const importedImages = images.map(
 
   previousImgBtn.addEventListener('click', () => {
     if (activeImageIndex === 0) {
-      setImage(importedImages.length - 1);
+      setImage(images.length - 1);
     } else {
       setImage(activeImageIndex - 1);
     }
   });
 
   nextImgBtn.addEventListener('click', () => {
-    if (activeImageIndex === importedImages.length - 1) {
+    if (activeImageIndex === images.length - 1) {
       setImage(0);
     } else {
       setImage(activeImageIndex + 1);

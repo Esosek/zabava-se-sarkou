@@ -15,10 +15,8 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const { title, heroImageAlt, price, bottomContent, images } = service.data;
-const heroImage =
-  service.data.heroImage &&
-  import(/* @vite-ignore */ `../${service.data.heroImage}`);
+const { title, heroImage, heroImageAlt, price, bottomContent, images } =
+  service.data;
 const { Content } = await service.render();
 ---
 
@@ -102,6 +100,6 @@ const { Content } = await service.render();
 
   if (isMobile) {
     const stickyHeight = stickyOrderElement.offsetHeight;
-    footer.style.marginBottom = `${stickyHeight}px`;
+    if (footer) footer.style.marginBottom = `${stickyHeight}px`;
   }
 </script>
