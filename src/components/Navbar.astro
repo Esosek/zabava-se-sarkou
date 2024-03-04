@@ -72,9 +72,9 @@ const currentPage = Astro.url.pathname;
   // Closes Navbar
   const mainNavbar = document.getElementById('main-navbar');
   const backdrop = document.querySelector('.backdrop') as HTMLElement;
-  const closeBtn = mainNavbar.querySelector('#main-navbar .close-btn');
-  closeBtn.addEventListener('click', () => {
-    mainNavbar.classList.toggle('open');
+  const closeBtn = mainNavbar?.querySelector('#main-navbar .close-btn');
+  closeBtn?.addEventListener('click', () => {
+    mainNavbar?.classList.toggle('open');
     backdrop.classList.toggle('open');
     setTimeout(() => {
       backdrop.style.display = 'none';
@@ -84,7 +84,7 @@ const currentPage = Astro.url.pathname;
 
 <style>
   #main-navbar {
-    margin-bottom: 2rem;
+    margin-bottom: 3.5rem;
   }
 
   ul {

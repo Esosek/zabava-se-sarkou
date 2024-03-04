@@ -64,11 +64,12 @@ body {
 h1 {
   font-size: var(--fs-large);
   font-weight: var(--fw-regular);
+  margin-bottom: 0.75rem;
 }
 
 h2 {
   font-size: var(--fs-medium);
-  margin-bottom: 0.5rem;
+  margin-block: 1.5rem 0.75rem;
 }
 
 h3 {
