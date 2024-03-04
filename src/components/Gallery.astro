@@ -55,7 +55,7 @@ const { images } = Astro.props;
   </div>
 </div>
 
-<div class="grid">
+<div class="gallery-section flex-group">
   {
     images.map((image) => {
       return (
@@ -120,15 +120,15 @@ const { images } = Astro.props;
     width: 2rem;
   }
 
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  .gallery-section {
+    justify-content: initial;
     gap: 2rem;
   }
 
   .img-wrapper {
     overflow: hidden;
     aspect-ratio: 1 / 1;
-    max-width: 300px;
+    max-width: 250px;
   }
 
   .gallery__content-img {
@@ -143,8 +143,8 @@ const { images } = Astro.props;
   }
 
   @media only screen and (max-width: 800px) {
-    .grid {
-      justify-items: center;
+    .gallery-section {
+      justify-content: center;
     }
 
     .icon-btn {

@@ -5,7 +5,7 @@
 
   border-radius: 20px;
   object-fit: cover;
-  max-width: 20rem;
+  max-width: min(20rem, 100%);
   box-shadow: var(--_horizontal-shadow) var(--_vertical-shadow) 0 0
     var(--clr-secondary-400);
 }
