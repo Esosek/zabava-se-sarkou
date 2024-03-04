@@ -50,7 +50,7 @@ const { Content } = await service.render();
         heroImage && (
           <Image
             src={heroImage}
-            alt={heroImageAlt}
+            alt={heroImageAlt ?? ''}
             class="content-img sh-top-small sh-right-small"
           />
         )
