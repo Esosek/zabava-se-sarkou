@@ -45,7 +45,7 @@ body {
 
 body {
   font-family: var(--ff-primary);
-  font-weight: var(--fw-light);
+  font-weight: var(--fw-regular);
   font-size: var(--fs-regular);
   color: var(--clr-neutral-700);
   display: flex;

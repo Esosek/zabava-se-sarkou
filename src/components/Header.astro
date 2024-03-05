@@ -32,9 +32,9 @@ import logoImg from '../assets/images/logo_text.png';
   const mainNavbar = document.getElementById('main-navbar');
   const menuBtn = document.querySelector('.menu-btn');
   const backdrop = document.querySelector('.backdrop') as HTMLElement;
-  menuBtn.addEventListener('click', () => {
+  menuBtn?.addEventListener('click', () => {
     backdrop.style.display = 'block';
-    mainNavbar.classList.toggle('open');
+    mainNavbar?.classList.toggle('open');
     setTimeout(() => {
       backdrop.classList.toggle('open');
     }, 10);
