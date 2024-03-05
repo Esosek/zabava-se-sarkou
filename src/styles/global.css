@@ -1,7 +1,7 @@
 :root {
-  --ff-primary: "Montserrat", system-ui, sans-serif;
+  --ff-primary: 'Montserrat', system-ui, sans-serif;
   --ff-accent: var(--ff-primary);
-  --ff-slogan: "Fira Sans", system-ui, sans-serif;
+  --ff-slogan: 'Fira Sans', system-ui, sans-serif;
 
   --fs-large: 2rem;
   --fs-medium: 1.1875rem;
@@ -116,7 +116,7 @@ button:focus {
   cursor: pointer;
 }
 
-ul {
+main ul {
   list-style-type: square;
   margin-block: 1rem 2.5rem;
 }
