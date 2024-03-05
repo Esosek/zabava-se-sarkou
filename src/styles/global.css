@@ -1,7 +1,7 @@
 :root {
-  --ff-primary: 'Montserrat', system-ui, sans-serif;
+  --ff-primary: "Montserrat", system-ui, sans-serif;
   --ff-accent: var(--ff-primary);
-  --ff-slogan: 'Fira Sans', system-ui, sans-serif;
+  --ff-slogan: "Fira Sans", system-ui, sans-serif;
 
   --fs-large: 2rem;
   --fs-medium: 1.1875rem;
@@ -67,9 +67,13 @@ h1 {
   margin-bottom: 0.75rem;
 }
 
+h2,
+h3 {
+  margin-block: 1.5rem 0.75rem;
+}
+
 h2 {
   font-size: var(--fs-medium);
-  margin-block: 1.5rem 0.75rem;
 }
 
 h3 {
