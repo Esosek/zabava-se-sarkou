@@ -120,7 +120,7 @@ ul {
   margin-block: 1rem 2.5rem;
 }
 
-li + li {
+main li + li {
   margin-top: 0.5rem;
 }
 

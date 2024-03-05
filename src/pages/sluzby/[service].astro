@@ -1,13 +1,13 @@
 ---
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 
-import MainLayout from '../../layouts/MainLayout.astro';
-import OrderButton from '../../components/OrderButton.astro';
-import Gallery from '../../components/Gallery.astro';
+import MainLayout from "../../layouts/MainLayout.astro";
+import OrderButton from "../../components/OrderButton.astro";
+import Gallery from "../../components/Gallery.astro";
 
 export async function getStaticPaths() {
-  const services = await getCollection('services');
+  const services = await getCollection("services");
   return services.map((service) => ({
     params: { service: service.slug },
     props: { service },
@@ -23,7 +23,7 @@ const { Content } = await service.render();
 <MainLayout title={title}>
   <div class="flow">
     <div class=`flow ${heroImage ? 'grid' : ''}`>
-      <div class="flow">
+      <div>
         <div class="content-wrap">
           <h1>{title}</h1>
           <Content />
@@ -38,7 +38,7 @@ const { Content } = await service.render();
           }
           <OrderButton
             selectedService={service.slug}
-            style={{ margin: '0.5rem auto' }}
+            style={{ margin: "0.5rem auto" }}
           >
             rezervovat
           </OrderButton>
@@ -48,7 +48,7 @@ const { Content } = await service.render();
         heroImage && (
           <Image
             src={heroImage}
-            alt={heroImageAlt ?? ''}
+            alt={heroImageAlt ?? ""}
             class="content-img sh-top-small sh-right-small"
           />
         )
@@ -93,9 +93,9 @@ const { Content } = await service.render();
 
 <script>
   const isMobile = window.innerWidth <= 800;
-  const footer = document.querySelector('footer');
+  const footer = document.querySelector("footer");
   const stickyOrderElement = document.querySelector(
-    '.cta-group'
+    ".cta-group"
   ) as HTMLElement;
 
   if (isMobile) {
