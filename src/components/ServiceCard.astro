@@ -1,0 +1,96 @@
+---
+import { Image } from "astro:assets";
+
+const { service, isExtended } = Astro.props;
+
+const img =
+  service.data.images && service.data.images[0]
+    ? service.data.images[0]
+    : service.data.heroImage;
+---
+
+<a href={`/sluzby/${service.slug}`} class="card">
+  {img !== undefined && <Image src={img} alt="" />}
+
+  <div class="tags">
+    <div class="tag" data-type="age">
+      {service.data.age}
+    </div>
+    <div class="tag" data-type="group-size">
+      {service.data.childrenCount}
+    </div>
+    {
+      service.data.tag && (
+        <div class="tag" data-type="theme">
+          {service.data.tag}
+        </div>
+      )
+    }
+  </div>
+  <div class="title">
+    <p>{service.data.title}</p>
+  </div>
+</a>
+
+<style>
+  .card {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 15rem;
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: var(--clr-neutral-200);
+    color: var(--clr-neutral-900);
+  }
+
+  img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .tags {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    min-width: 80px;
+    font-size: var(--fs-small);
+  }
+
+  .tag {
+    --_bg-color: var(--bg-color, var(--clr-primary-400, #fff));
+    background-color: var(--_bg-color);
+    padding: 5px;
+  }
+
+  .tag[data-type="group-size"] {
+    --bg-color: var(--clr-secondary-400);
+  }
+
+  .tag[data-type="theme"] {
+    --bg-color: var(--clr-tertiary-400);
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background-color: var(--clr-primary-400);
+    min-height: 4.5rem;
+    font-size: var(--fs-medium);
+  }
+
+  .title p {
+    margin: 0;
+  }
+</style>

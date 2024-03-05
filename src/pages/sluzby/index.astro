@@ -1,31 +1,34 @@
 ---
-import { getCollection } from 'astro:content';
-import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
 
-const services = await getCollection('services');
+const services = await getCollection("services");
 const featuredServices = services.filter((service) => service.data.isFeatured);
 const basicServices = services.filter((service) => !service.data.isFeatured);
 ---
 
 <MainLayout title="Služby">
   <h1>Služby</h1>
-  <ul>
-    <section class="grid">
-      {
-        featuredServices.map((service) => (
-          <li>
-            <a href={`/sluzby/${service.slug}`}>{service.data.title}</a>
-          </li>
-        ))
-      }
-    </section>
-
-    {
-      basicServices.map((service) => (
-        <li>
-          <a href={`/sluzby/${service.slug}`}>{service.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <section class="flex-group">
+    {featuredServices.map((service) => <ServiceCard service={service} />)}
+  </section>
+  {
+    // basicServices.map((service) => (
+    //   <li>
+    //     <a href={`/sluzby/${service.slug}`}>{service.data.title}</a>
+    //   </li>
+    // ))
+  }
 </MainLayout>
+
+<style>
+  .flex-group {
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .card {
+    background-image:;
+  }
+</style>
