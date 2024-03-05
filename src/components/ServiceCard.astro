@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-const { service, isExtended } = Astro.props;
+const { service, isFeatured } = Astro.props;
 
 const img =
   service.data.images && service.data.images[0]
@@ -9,41 +9,55 @@ const img =
     : service.data.heroImage;
 ---
 
-<a href={`/sluzby/${service.slug}`} class="card">
+<a
+  href=`/sluzby/${service.slug}`
+  class=`card ${isFeatured === "true" ? "extended" : ""}`
+  style=`${img === undefined ? "grid-template-columns:auto" : ""}`
+>
   {img !== undefined && <Image src={img} alt="" />}
-
-  <div class="tags">
-    <div class="tag" data-type="age">
-      {service.data.age}
+  <div>
+    <div class="title">
+      <p>{service.data.title}</p>
     </div>
-    <div class="tag" data-type="group-size">
-      {service.data.childrenCount}
+    <div class="tags">
+      <div class="tag" data-type="age">
+        {service.data.age}
+      </div>
+      <div class="tag" data-type="group-size">
+        {service.data.childrenCount}
+      </div>
+      {
+        service.data.tag && (
+          <div class="tag" data-type="theme">
+            {service.data.tag}
+          </div>
+        )
+      }
     </div>
-    {
-      service.data.tag && (
-        <div class="tag" data-type="theme">
-          {service.data.tag}
-        </div>
-      )
-    }
-  </div>
-  <div class="title">
-    <p>{service.data.title}</p>
   </div>
 </a>
 
 <style>
   .card {
-    position: relative;
-    aspect-ratio: 1 / 1;
     width: 100%;
-    max-width: 15rem;
+    max-width: 21rem;
     overflow: hidden;
     border-radius: 1rem;
     background-color: var(--clr-neutral-200);
     color: var(--clr-neutral-900);
     box-shadow: 0 0 5px 0 var(--clr-transparent-25);
     transition: transform 150ms ease-out;
+  }
+
+  .card:not(.extended) {
+    display: grid;
+    grid-template-columns: 98px auto;
+  }
+
+  .card.extended {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 15rem;
   }
 
   .card:hover {
@@ -56,16 +70,19 @@ const img =
   }
 
   .tags {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    font-size: var(--fs-small);
+  }
+
+  .extended .tags {
     position: absolute;
     left: 0;
-    bottom: 0;
     top: 1rem;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+    grid-template-columns: 1fr;
     gap: 0.5rem;
     min-width: 80px;
-    font-size: var(--fs-small);
   }
 
   .tag {
@@ -76,31 +93,34 @@ const img =
   }
 
   .tag[data-type="group-size"] {
-    --bg-color: var(--clr-secondary-400);
+    --bg-color: var(--clr-tertiary-400);
   }
 
   .tag[data-type="theme"] {
-    --bg-color: var(--clr-tertiary-400);
+    --bg-color: var(--clr-neutral-200);
+  }
+
+  .extended .tag[data-type="theme"] {
+    --bg-color: var(--clr-secondary-400);
   }
 
   .title {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    background-color: var(--clr-secondary-400);
+    min-height: 4.5rem;
+    font-size: var(--fs-medium);
+  }
+
+  .extended .title {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    text-align: center;
     background-color: var(--clr-primary-400);
-    min-height: 4.5rem;
-    font-size: var(--fs-medium);
     box-shadow: 0 -2.5px 5px 0 var(--clr-transparent-25);
-    transition: min-height 150ms ease-out;
-  }
-
-  .card:hover .title {
-    min-height: 5rem;
   }
 
   .title p {

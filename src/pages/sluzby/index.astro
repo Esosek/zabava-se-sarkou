@@ -10,25 +10,43 @@ const basicServices = services.filter((service) => !service.data.isFeatured);
 
 <MainLayout title="Služby">
   <h1>Služby</h1>
-  <section class="flex-group">
-    {featuredServices.map((service) => <ServiceCard service={service} />)}
+  <section id="featured-services" class="flex-group">
+    {
+      featuredServices.map((service) => (
+        <ServiceCard service={service} isFeatured="true" />
+      ))
+    }
   </section>
-  {
-    // basicServices.map((service) => (
-    //   <li>
-    //     <a href={`/sluzby/${service.slug}`}>{service.data.title}</a>
-    //   </li>
-    // ))
-  }
+  <section id="basic-services" class="flex-group">
+    {
+      basicServices.map((service) => (
+        <ServiceCard service={service} isFeatured="false" />
+      ))
+    }
+  </section>
 </MainLayout>
 
 <style>
   .flex-group {
     justify-content: center;
-    gap: 3rem;
+    gap: 2rem 3rem;
+  }
+
+  section:first-of-type {
+    margin-bottom: 3rem;
+  }
+
+  #basic-services {
+    column-gap: 5rem;
   }
 
   .card {
     background-image:;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .flex-group {
+      gap: 2rem;
+    }
   }
 </style>
