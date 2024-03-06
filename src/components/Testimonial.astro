@@ -13,10 +13,16 @@ if (floatDirection === 'left') {
 
 const { title, occupation, age, date } = testimonial.data;
 const ageText = age ? ` ${age}` : '';
+const dateObject = new Date(date);
+const formattedDate = dateObject.toLocaleDateString('cs-CZ', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+});
 ---
 
 <div class="testimonial">
-  {date && <p>{date}</p>}
+  {date && <p>{formattedDate}</p>}
   <p>
     "{testimonial.body}"
   </p>
