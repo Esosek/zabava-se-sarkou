@@ -1,5 +1,5 @@
 ---
-name: Aneta
+title: Aneta
 occupation: nevěsta
 age: 36
 date: 20.6.2023

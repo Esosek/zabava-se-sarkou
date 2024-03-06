@@ -1,5 +1,5 @@
 ---
-name: Zuzana
+title: Zuzana
 occupation: učitelka v mateřské škole
 age: 28
 date: 3.10.2023

@@ -21,7 +21,7 @@ const testimonialCollection = defineCollection({
   type: 'content',
   schema: () =>
     z.object({
-      name: z.string(),
+      title: z.string(),
       occupation: z.string().optional(),
       age: z.number().optional(),
       date: z.date().optional(),

@@ -11,7 +11,7 @@ if (floatDirection === 'left') {
   isFloatLeft = Math.random() < 0.5;
 }
 
-const { name, occupation, age, date } = testimonial.data;
+const { title, occupation, age, date } = testimonial.data;
 const ageText = age ? ` ${age}` : '';
 ---
 
@@ -23,7 +23,7 @@ const ageText = age ? ` ${age}` : '';
   <p
     class=`testimonial-author ${ isFloatLeft ? 'text-float--left' : 'text-float--right'}`
   >
-    {`${name}${ageText}, ${occupation}`}
+    {`${title}${ageText}, ${occupation}`}
   </p>
   <div class=`circle ${ isFloatLeft ? 'circle--left' : 'circle--right'}`></div>
 </div>
