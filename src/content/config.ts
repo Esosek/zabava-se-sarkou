@@ -17,6 +17,18 @@ const serviceCollection = defineCollection({
     }),
 });
 
+const testimonialCollection = defineCollection({
+  type: 'content',
+  schema: () =>
+    z.object({
+      name: z.string(),
+      occupation: z.string().optional(),
+      age: z.number().optional(),
+      date: z.date().optional(),
+    }),
+});
+
 export const collections = {
   services: serviceCollection,
+  testimonial: testimonialCollection,
 };
