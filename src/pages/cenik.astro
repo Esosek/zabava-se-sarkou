@@ -4,4 +4,46 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout title="Ceník">
   <h1>Ceník</h1>
+  <p>
+    Cena jednotlivých programů se často odvíjí od počtu dětí se stanovenou
+    minimální částkou, která je vždy uvedena na stránce daného programu. Finální
+    cenu, včetně cestovného, si vzájemně odsouhlasíme po zaslání rezervace přes <a
+      href="/kontakt">kontaktní formulář</a
+    >.
+  </p>
+  <section id="travel">
+    <h2>Cestovné</h2>
+    <p>
+      Cena se odvíjí podle vzdálenosti od Oslavice u Velkého Meziříčí (PSČ
+      59401)
+    </p>
+    <ul>
+      <li>
+        <b>Do 15 km</b> je cestovné <b>zdarma</b>.
+      </li>
+      <li>
+        <b>Nad 15 km</b> se hradí <b>10 Kč/km</b>, včetně zpáteční cesty
+      </li>
+    </ul>
+    <h3>Speciální ceník pro mateřské a základní školy</h3>
+    <ul>
+      <li>Zdarma do 20 km</li>
+      <li>Při počtu žáků nad 50 je cestovné zdarma do 60 km</li>
+    </ul>
+  </section>
+
+  <section id="reservation">
+    <h2>Rezervační poplatek</h2>
+    <ul>
+      <li>
+        Rezervační poplatek ve výši <b>20% z celkové ceny programu</b> je nutné uhradit
+        při rezervaci
+      </li>
+      <li>Nevztahuje se na mateřské a základní školy</li>
+      <li>
+        Termín je závazně rezervován pouze po zaplacení rezervačního poplatku
+      </li>
+      <li>Doplatek se hradí v den konání oslavy</li>
+    </ul>
+  </section>
 </MainLayout>
