@@ -1,23 +1,27 @@
 ---
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 
 import OrderButton from '../components/OrderButton.astro';
 import MainLayout from '../layouts/MainLayout.astro';
+import Testimonial from '../components/Testimonial.astro';
 
 import topImg from '../assets/images/uvod_01.webp';
 import bottomImg from '../assets/images/uvod_02.webp';
+
+const services = await getCollection('testimonials');
 ---
 
 <MainLayout title="Úvod">
   <div class="grid">
-    <div class="introduction">
+    <section class="introduction">
       <p class="introduction-text">
         Hledáte program, který bude děti skutečně bavit a zároveň je hravou
         formou něco naučí? Chcete upsořádat parádní narozeninovou oslavu,
         karneval či akci ve vaší školce? Pak jste tu správně!
       </p>
       <OrderButton>Objednat zábavu</OrderButton>
-    </div>
+    </section>
 
     <Image
       class="content-img sh-top-large sh-left-large"
@@ -31,29 +35,10 @@ import bottomImg from '../assets/images/uvod_02.webp';
       alt="Šárka maluje motýlka na obličej malé dívce"
     />
 
-    <div class="testimonials">
-      <div class="testimonial">
-        <p>20.6.2023</p>
-        <p>
-          "Šárka byla naprosto spolehlivá, vytvořila dětem originální zábavu a
-          já mohla prožít svatbu bez starostí o nejmenší. Všichni rodice byli
-          nadšení."
-        </p>
-        <p class="testimonial-author text-float--right">-Aneta 36, nevěsta</p>
-        <div class="circle circle--right"></div>
-      </div>
-      <div class="testimonial">
-        <p>3.10.2023</p>
-        <p>
-          "Zábavu se Šárkou k nám do školy zveme každý měsíc na autorská
-          divadla. Děti se vždy nemohou dočkat."
-        </p>
-        <p class="testimonial-author text-float--left">
-          -Zuzana 28, učitelka v mateřské školce
-        </p>
-        <div class="circle circle--left"></div>
-      </div>
-    </div>
+    <section class="testimonials">
+      <Testimonial testimonial={services[0]} floatDirection="right" />
+      <Testimonial testimonial={services[1]} floatDirection="left" />
+    </section>
   </div>
 
   <!-- Netlify Identity redirect -->
@@ -91,56 +76,6 @@ import bottomImg from '../assets/images/uvod_02.webp';
     width: 100%;
   }
 
-  .testimonial {
-    position: relative;
-    font-weight: var(--fw-regular);
-    background-color: var(--clr-tertiary-400);
-    border-radius: 10px;
-    padding-inline: 1rem;
-    max-width: 15rem;
-    justify-self: center;
-  }
-
-  .testimonial:last-of-type {
-    justify-self: end;
-    margin-bottom: 1rem;
-  }
-
-  .testimonial-author {
-    font-size: var(--fs-medium);
-    position: relative;
-    z-index: 5;
-    margin-top: 1rem;
-  }
-
-  .text-float--right {
-    text-align: right;
-    right: -2em;
-  }
-
-  .text-float--left {
-    text-align: left;
-    left: -2em;
-  }
-
-  .circle {
-    position: absolute;
-    bottom: -2rem;
-    width: 6rem;
-    height: 6rem;
-    background-color: var(--clr-secondary-400);
-    border-radius: 50%;
-  }
-
-  .circle--right {
-    right: -3rem;
-  }
-
-  .circle--left {
-    left: -3rem;
-    bottom: -1.5rem;
-  }
-
   @media only screen and (max-width: 800px) {
     .introduction {
       text-align: center;
@@ -153,5 +88,12 @@ import bottomImg from '../assets/images/uvod_02.webp';
     img:last-of-type {
       order: 1;
     }
+  }
+</style>
+
+<style is:inline>
+  .testimonial:last-of-type {
+    justify-self: end;
+    margin-bottom: 1rem;
   }
 </style>

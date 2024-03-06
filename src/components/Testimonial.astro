@@ -1,0 +1,76 @@
+---
+const { testimonial, floatDirection } = Astro.props;
+
+let isFloatLeft: boolean;
+
+if (floatDirection === 'left') {
+  isFloatLeft = true;
+} else if (floatDirection === 'right') {
+  isFloatLeft = false;
+} else {
+  isFloatLeft = Math.random() < 0.5;
+}
+
+const { name, occupation, age, date } = testimonial.data;
+const ageText = age ? ` ${age}` : '';
+---
+
+<div class="testimonial">
+  {date && <p>{date}</p>}
+  <p>
+    "{testimonial.body}"
+  </p>
+  <p
+    class=`testimonial-author ${ isFloatLeft ? 'text-float--left' : 'text-float--right'}`
+  >
+    {`${name}${ageText}, ${occupation}`}
+  </p>
+  <div class=`circle ${ isFloatLeft ? 'circle--left' : 'circle--right'}`></div>
+</div>
+
+<style>
+  .testimonial {
+    position: relative;
+    font-weight: var(--fw-regular);
+    background-color: var(--clr-tertiary-400);
+    border-radius: 10px;
+    padding-inline: 1rem;
+    max-width: 15rem;
+    justify-self: center;
+  }
+
+  .testimonial-author {
+    font-size: var(--fs-medium);
+    position: relative;
+    z-index: 5;
+    margin-top: 1rem;
+  }
+
+  .text-float--right {
+    text-align: right;
+    right: -2em;
+  }
+
+  .text-float--left {
+    text-align: left;
+    left: -2em;
+  }
+
+  .circle {
+    position: absolute;
+    bottom: -2rem;
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--clr-secondary-400);
+    border-radius: 50%;
+  }
+
+  .circle--right {
+    right: -3rem;
+  }
+
+  .circle--left {
+    left: -3rem;
+    bottom: -1.5rem;
+  }
+</style>
