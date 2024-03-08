@@ -12,7 +12,10 @@ if (floatDirection === 'left') {
 }
 
 const { title, occupation, age, date } = testimonial.data;
+
 const ageText = age ? ` ${age}` : '';
+const occupationText = occupation ? `, ${occupation}` : '';
+
 const dateObject = new Date(date);
 const formattedDate = dateObject.toLocaleDateString('cs-CZ', {
   day: '2-digit',
@@ -29,7 +32,7 @@ const formattedDate = dateObject.toLocaleDateString('cs-CZ', {
   <p
     class=`testimonial-author ${ isFloatLeft ? 'text-float--left' : 'text-float--right'}`
   >
-    {`${title}${ageText}, ${occupation}`}
+    {`${title}${ageText}${occupationText}`}
   </p>
   <div class=`circle ${ isFloatLeft ? 'circle--left' : 'circle--right'}`></div>
 </div>

@@ -87,7 +87,12 @@ collections:
     slug: '{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: 'Jméno', name: 'title', widget: 'string' }
-      - { label: 'Zaměstnání', name: 'occupation', widget: 'string' }
+      - {
+          label: 'Zaměstnání',
+          name: 'occupation',
+          widget: 'string',
+          required: false,
+        }
       - {
           label: 'Věk',
           name: 'age',
