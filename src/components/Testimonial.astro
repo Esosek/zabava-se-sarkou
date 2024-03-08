@@ -45,7 +45,7 @@ const formattedDate = dateObject.toLocaleDateString('cs-CZ', {
     font-size: var(--fs-medium);
     position: relative;
     z-index: 5;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
   }
 
   .text-float--right {
@@ -74,5 +74,24 @@ const formattedDate = dateObject.toLocaleDateString('cs-CZ', {
   .circle--left {
     left: -3rem;
     bottom: -1.5rem;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .text-float--right {
+      right: -1.25rem;
+    }
+
+    .text-float--left {
+      left: -1.25rem;
+    }
+
+    .circle--right {
+      right: -1.25rem;
+    }
+
+    .circle--left {
+      left: -1.25rem;
+      bottom: -3rem;
+    }
   }
 </style>
