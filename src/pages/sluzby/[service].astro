@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const { title, heroImage, heroImageAlt, price, bottomContent, images } =
+const { title, heroImage, heroImageAlt, price, bottomContent, videos, images } =
   service.data;
 const { Content } = await service.render();
 ---
@@ -55,6 +55,22 @@ const { Content } = await service.render();
       }
     </div>
     {bottomContent && <p>{bottomContent}</p>}
+    {
+      videos && (
+        <div class="videos">
+          {videos.map((video) => (
+            <iframe
+              class="video-iframe"
+              src={`https://www.youtube.com/embed/${video}`}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            />
+          ))}
+        </div>
+      )
+    }
     {images && <Gallery images={images} />}
   </div>
 </MainLayout>
@@ -71,6 +87,20 @@ const { Content } = await service.render();
 
   .content-img {
     justify-self: center;
+  }
+
+  .videos {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 2rem;
+    margin-block: 2rem;
+  }
+
+  .video-iframe {
+    max-width: 560px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
 
   @media only screen and (max-width: 800px) {

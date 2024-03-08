@@ -66,10 +66,19 @@ collections:
           widget: 'string',
           required: false,
         }
+      - { label: 'Video', name: 'videos', widget: 'string', required: false }
       - {
           label: 'Spodní obsah',
           name: 'bottomContent',
           widget: 'markdown',
+          required: false,
+        }
+      - {
+          label: 'Video',
+          name: 'videos',
+          widget: 'list',
+          summary: 'Video',
+          field: { label: YouTube ID, name: video, widget: string },
           required: false,
         }
       - {

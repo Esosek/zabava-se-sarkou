@@ -13,6 +13,7 @@ const serviceCollection = defineCollection({
       heroImage: image().optional(),
       heroImageAlt: z.string().optional(),
       bottomContent: z.string().optional(),
+      videos: z.array(z.string()).optional(),
       images: z.array(image()).optional(),
     }),
 });
