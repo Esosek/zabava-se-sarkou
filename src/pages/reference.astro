@@ -1,7 +1,28 @@
 ---
+import { getCollection } from 'astro:content';
+
 import MainLayout from '../layouts/MainLayout.astro';
+import Testimonial from '../components/Testimonial.astro';
+
+const testimonials = await getCollection('testimonials');
 ---
 
 <MainLayout title="Reference">
   <h1>Reference</h1>
+  <div class="grid">
+    {
+      testimonials.map((testimonial) => (
+        <Testimonial testimonial={testimonial} />
+      ))
+    }
+  </div>
 </MainLayout>
+
+<style>
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    gap: 6rem;
+    margin-bottom: 3rem;
+  }
+</style>

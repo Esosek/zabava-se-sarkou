@@ -1,16 +1,6 @@
 ---
 const { testimonial, floatDirection } = Astro.props;
 
-let isFloatLeft: boolean;
-
-if (floatDirection === 'left') {
-  isFloatLeft = true;
-} else if (floatDirection === 'right') {
-  isFloatLeft = false;
-} else {
-  isFloatLeft = Math.random() < 0.5;
-}
-
 const { title, occupation, age, date } = testimonial.data;
 
 const ageText = age ? ` ${age}` : '';
@@ -30,11 +20,14 @@ const formattedDate = dateObject.toLocaleDateString('cs-CZ', {
     "{testimonial.body}"
   </p>
   <p
-    class=`testimonial-author ${ isFloatLeft ? 'text-float--left' : 'text-float--right'}`
+    class=`testimonial-author ${ floatDirection === 'left' ? 'text-float--left' : 'text-float--right'}`
   >
     {`${title}${ageText}${occupationText}`}
   </p>
-  <div class=`circle ${ isFloatLeft ? 'circle--left' : 'circle--right'}`></div>
+  <div
+    class=`circle ${ floatDirection === 'left' ? 'circle--left' : 'circle--right'}`
+  >
+  </div>
 </div>
 
 <style>
@@ -44,7 +37,7 @@ const formattedDate = dateObject.toLocaleDateString('cs-CZ', {
     background-color: var(--clr-tertiary-400);
     border-radius: 10px;
     padding-inline: 1rem;
-    max-width: 15rem;
+    max-width: 30ch;
     justify-self: center;
   }
 
