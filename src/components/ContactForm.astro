@@ -5,10 +5,8 @@ import { getCollection } from 'astro:content';
 import { getReservedDates } from '../server/calendar/events';
 
 const services = await getCollection('services');
-const program = Astro.url.searchParams.get('p');
 
-// const reservedDates: any = await getReservedDates();
-const reservedDates: any = [];
+const reservedDates: any = await getReservedDates();
 ---
 
 <form class="submit-form flow" method="POST">
@@ -223,24 +221,29 @@ const reservedDates: any = [];
   }
 </style>
 
-<script define:vars={{ program }}>
+<script>
   const dateLocationElement = document.getElementById('date-location-group');
-  const selectElement = document.getElementById('service-select');
+  const selectElement = document.getElementById(
+    'service-select'
+  ) as HTMLSelectElement;
 
-  selectElement.addEventListener('change', () => {
+  selectElement?.addEventListener('change', () => {
     if (selectElement.value === 'zadny') hideInputs();
     else showInputs();
   });
+
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const program = urlSearchParams.get('p');
 
   selectElement.value = program ?? 'zadny';
   if (selectElement.value !== 'zadny') showInputs();
 
   function hideInputs() {
-    dateLocationElement.style.display = 'none';
+    if (dateLocationElement) dateLocationElement.style.display = 'none';
   }
 
   function showInputs() {
-    dateLocationElement.style.display = '';
+    if (dateLocationElement) dateLocationElement.style.display = '';
   }
 </script>
 
