@@ -12,10 +12,17 @@ export async function getStaticPaths() {
 const { article } = Astro.props;
 const { title, date } = article.data;
 const { Content } = await article.render();
+
+const dateObject = new Date(date);
+const formattedDate = dateObject.toLocaleDateString('cs-CZ', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+});
 ---
 
 <MainLayout title={title}>
   <h1>{title}</h1>
-  <p>{date}</p>
+  <p>{formattedDate}</p>
   <Content />
 </MainLayout>
