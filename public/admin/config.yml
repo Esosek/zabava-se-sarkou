@@ -18,6 +18,12 @@ collections:
       - { label: 'Nadpis', name: 'title', widget: 'string' }
       - { label: 'Datum', name: 'date', widget: 'datetime' }
       - { label: 'Obrázek', name: 'image', widget: 'image', required: false }
+      - {
+          label: 'Popis obraázku',
+          name: 'imageAlt',
+          widget: 'string',
+          required: false,
+        }
       - { label: 'Obsah', name: 'body', widget: 'markdown' }
   - name: 'services'
     label: 'Služby'

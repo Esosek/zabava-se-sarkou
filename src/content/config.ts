@@ -18,6 +18,17 @@ const serviceCollection = defineCollection({
     }),
 });
 
+const articleCollection = defineCollection({
+  type: 'content',
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      date: z.date(),
+      image: image().optional(),
+      imageAlt: z.string().optional(),
+    }),
+});
+
 const testimonialCollection = defineCollection({
   type: 'content',
   schema: () =>
@@ -31,5 +42,6 @@ const testimonialCollection = defineCollection({
 
 export const collections = {
   services: serviceCollection,
+  articles: articleCollection,
   testimonial: testimonialCollection,
 };
